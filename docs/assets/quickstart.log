@@ -1,0 +1,18 @@
+$ node samples/quickstart/run.mjs --check
+dsh-settlement-docs quickstart - synthetic settlement document checklist (not customer data)
+template: 房建 14 items (12 required / 2 optional), checklist matches template
+checklist: samples/quickstart/input/checklist-housing.csv (14 items)
+submitted: 11 files / 14 items
+missing: 2 required + 1 optional (info)
+copies short: 1; unsigned: 0; unstamped: 1
+completeness: 66.67% (8/12 required), overall 64.29%
+issues: 4 blocking, 1 info
+  blocking copies_short JS-01 “竣工结算书”（JS-01）应有 3 份，实交 1 份
+  blocking missing JS-08 必需资料“设计变更通知单”（JS-08）未提交
+  blocking unstamped JS-10 “隐蔽工程验收记录”（JS-10）未盖章
+  blocking missing JS-12 必需资料“竣工验收备案表”（JS-12）未提交
+  info optional_missing JS-14 非必需资料“工期顺延与索赔资料”（JS-14）未提交（提示）
+worksheet: exports/settlement-check-2026-11.csv 15 rows, 1638 bytes, sha256 6a09d934a37c...
+worksheet columns: 行号,资料编码,资料名称,是否必需,应有份数,实交份数,文件名,签字,盖章,是否齐套,问题类型,问题说明
+golden samples/quickstart/expected/result.json matches
+quickstart ok

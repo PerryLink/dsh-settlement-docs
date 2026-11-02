@@ -1,0 +1,102 @@
+{
+  "name": "dsh-settlement-docs",
+  "version": "0.1.0-alpha.1",
+  "description": "Check a construction final-settlement document checklist against what was actually submitted: missing documents, short copies, missing signatures/stamps and the completeness rate; export a review worksheet CSV.",
+  "type": "module",
+  "main": "./lib/plugin/index.js",
+  "types": "./lib/plugin/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/plugin/index.d.ts",
+      "default": "./lib/plugin/index.js"
+    }
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "README-zh.md",
+    "README-es.md",
+    "README-pt.md",
+    "README-hi.md",
+    "TROUBLESHOOTING.md",
+    "NOTICE",
+    "THIRD-PARTY-NOTICES",
+    "screenshots.json",
+    "samples",
+    "docs/assets",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "demo": {
+      "sample": "samples/quickstart/input/checklist-housing.csv",
+      "prompt": "帮我把这份竣工结算资料核对一下：缺哪些、份数够不够、有没有没签字的，再把核对表导出来。",
+      "expect": "samples/quickstart/expected/result.json",
+      "screenshot": "docs/assets/quickstart.png",
+      "reads": [
+        "用户指定的资料清单 CSV 与实际提交清单 CSV（样例：samples/quickstart/input/）"
+      ],
+      "writes": [
+        "$DSH_HOME/dsh-settlement-docs/exports/"
+      ],
+      "network": false,
+      "external": []
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.3 <0.4.0",
+    "node": ">=24.9.0 <25"
+  },
+  "packageManager": "pnpm@11.28.5",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "lint": "node scripts/lint.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "pnpm build && node --test test/*.test.mjs",
+    "gate": "node scripts/gate.mjs",
+    "acceptance": "node scripts/acceptance.mjs",
+    "quickstart": "node samples/quickstart/run.mjs --check",
+    "prepublishOnly": "npm run build && node scripts/lint.mjs && node scripts/gate.mjs"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "settlement",
+    "completion-documents",
+    "construction",
+    "document-checklist",
+    "csv",
+    "perrylink"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PerryLink/dsh-settlement-docs.git"
+  },
+  "homepage": "https://perrylink.github.io/dsh-plugins/packages/dsh-settlement-docs.html",
+  "bugs": {
+    "url": "https://github.com/PerryLink/dsh-settlement-docs/issues"
+  },
+  "license": "Apache-2.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.5 <5.0.0",
+    "@deepseek-ai/dsh-tools": ">=0.2.1-rc.3 <0.4.0"
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.5",
+    "@deepseek-ai/dsh-tools": "0.2.1-rc.3",
+    "@types/node": "^24.0.0",
+    "typescript": "7.0.2"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    }
+  }
+}

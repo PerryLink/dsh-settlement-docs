@@ -1,0 +1,302 @@
+{
+  "_note": "Real tool output. The export path is normalised to exports/<file>.csv (the run directory is a temp dir); everything else is verbatim. Copies are integers; the checklist file equals the 房建 template byte-for-byte.",
+  "template": {
+    "project_type": "房建",
+    "items": 14,
+    "required_items": 12,
+    "optional_items": 2,
+    "sha256": "63b248bde895652bfbfa68b6ad11e952351bdaee63d07934a477a77ffe558785",
+    "bytes": 561
+  },
+  "sample": {
+    "checklist": {
+      "path": "samples/quickstart/input/checklist-housing.csv",
+      "bytes": 561,
+      "sha256": "63b248bde895652bfbfa68b6ad11e952351bdaee63d07934a477a77ffe558785"
+    },
+    "submission": {
+      "path": "samples/quickstart/input/submitted-2026-11.csv",
+      "bytes": 599,
+      "sha256": "56ff41dc4ae343c7276367c33f3b1a812551ab4dd0b5174f9582776771fe0fa2"
+    }
+  },
+  "check": {
+    "summary": {
+      "checklist_items": 14,
+      "required_items": 12,
+      "optional_items": 2,
+      "submitted_items": 11,
+      "missing_required": 2,
+      "copies_short": 1,
+      "unsigned": 0,
+      "unstamped": 1,
+      "optional_missing": 1,
+      "blocking_issues": 4,
+      "info_issues": 1,
+      "required_complete": 8,
+      "overall_complete": 9,
+      "rate_pct": 66.67,
+      "overall_rate_pct": 64.29
+    },
+    "issues": [
+      {
+        "type": "copies_short",
+        "level": "blocking",
+        "code": "JS-01",
+        "name": "竣工结算书",
+        "message": "“竣工结算书”（JS-01）应有 3 份，实交 1 份",
+        "required_copies": 3,
+        "submitted_copies": 1
+      },
+      {
+        "type": "missing",
+        "level": "blocking",
+        "code": "JS-08",
+        "name": "设计变更通知单",
+        "message": "必需资料“设计变更通知单”（JS-08）未提交",
+        "required_copies": 2,
+        "submitted_copies": 0
+      },
+      {
+        "type": "unstamped",
+        "level": "blocking",
+        "code": "JS-10",
+        "name": "隐蔽工程验收记录",
+        "message": "“隐蔽工程验收记录”（JS-10）未盖章",
+        "required_copies": 1,
+        "submitted_copies": 1
+      },
+      {
+        "type": "missing",
+        "level": "blocking",
+        "code": "JS-12",
+        "name": "竣工验收备案表",
+        "message": "必需资料“竣工验收备案表”（JS-12）未提交",
+        "required_copies": 1,
+        "submitted_copies": 0
+      },
+      {
+        "type": "optional_missing",
+        "level": "info",
+        "code": "JS-14",
+        "name": "工期顺延与索赔资料",
+        "message": "非必需资料“工期顺延与索赔资料”（JS-14）未提交（提示）",
+        "required_copies": 1,
+        "submitted_copies": 0
+      }
+    ],
+    "items": [
+      {
+        "code": "JS-01",
+        "name": "竣工结算书",
+        "required": true,
+        "required_copies": 3,
+        "submitted": true,
+        "filename": "JS-01-竣工结算书.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": true,
+        "complete": false,
+        "issues": [
+          "copies_short"
+        ]
+      },
+      {
+        "code": "JS-02",
+        "name": "工程量清单结算书",
+        "required": true,
+        "required_copies": 2,
+        "submitted": true,
+        "filename": "JS-02-工程量清单结算书.pdf",
+        "copies": 2,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-03",
+        "name": "施工合同及补充协议",
+        "required": true,
+        "required_copies": 1,
+        "submitted": true,
+        "filename": "JS-03-施工合同及补充协议.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-04",
+        "name": "招标文件与投标文件",
+        "required": true,
+        "required_copies": 1,
+        "submitted": true,
+        "filename": "JS-04-招标文件与投标文件.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-05",
+        "name": "开工报告与竣工报告",
+        "required": true,
+        "required_copies": 1,
+        "submitted": true,
+        "filename": "JS-05-开工报告与竣工报告.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-06",
+        "name": "施工许可证",
+        "required": true,
+        "required_copies": 1,
+        "submitted": true,
+        "filename": "JS-06-施工许可证.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-07",
+        "name": "图纸会审纪要",
+        "required": true,
+        "required_copies": 1,
+        "submitted": true,
+        "filename": "JS-07-图纸会审纪要.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-08",
+        "name": "设计变更通知单",
+        "required": true,
+        "required_copies": 2,
+        "submitted": false,
+        "filename": "",
+        "copies": 0,
+        "signed": false,
+        "stamped": false,
+        "complete": false,
+        "issues": [
+          "missing"
+        ]
+      },
+      {
+        "code": "JS-09",
+        "name": "现场签证单",
+        "required": true,
+        "required_copies": 2,
+        "submitted": true,
+        "filename": "JS-09-现场签证单.pdf",
+        "copies": 2,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-10",
+        "name": "隐蔽工程验收记录",
+        "required": true,
+        "required_copies": 1,
+        "submitted": true,
+        "filename": "JS-10-隐蔽工程验收记录.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": false,
+        "complete": false,
+        "issues": [
+          "unstamped"
+        ]
+      },
+      {
+        "code": "JS-11",
+        "name": "分部分项工程质量验收记录",
+        "required": true,
+        "required_copies": 1,
+        "submitted": true,
+        "filename": "JS-11-分部分项工程质量验收记录.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-12",
+        "name": "竣工验收备案表",
+        "required": true,
+        "required_copies": 1,
+        "submitted": false,
+        "filename": "",
+        "copies": 0,
+        "signed": false,
+        "stamped": false,
+        "complete": false,
+        "issues": [
+          "missing"
+        ]
+      },
+      {
+        "code": "JS-13",
+        "name": "甲供材料领用对账单",
+        "required": false,
+        "required_copies": 1,
+        "submitted": true,
+        "filename": "JS-13-甲供材料领用对账单.pdf",
+        "copies": 1,
+        "signed": true,
+        "stamped": true,
+        "complete": true,
+        "issues": []
+      },
+      {
+        "code": "JS-14",
+        "name": "工期顺延与索赔资料",
+        "required": false,
+        "required_copies": 1,
+        "submitted": false,
+        "filename": "",
+        "copies": 0,
+        "signed": false,
+        "stamped": false,
+        "complete": false,
+        "issues": [
+          "optional_missing"
+        ]
+      }
+    ]
+  },
+  "export": {
+    "path": "exports/settlement-check-2026-11.csv",
+    "sha256": "6a09d934a37cda8ed4705159b5f9cbacbde8f1d85c1ccae1c7c4384df95b0b50",
+    "rows": 15,
+    "bytes": 1638,
+    "checklist_items": 14,
+    "missing_required": 2,
+    "copies_short": 1,
+    "unsigned": 0,
+    "unstamped": 1,
+    "optional_missing": 1,
+    "blocking_issues": 4,
+    "info_issues": 1,
+    "rate_pct": 66.67
+  },
+  "worksheet": {
+    "bom": true,
+    "text": "行号,资料编码,资料名称,是否必需,应有份数,实交份数,文件名,签字,盖章,是否齐套,问题类型,问题说明\n1,JS-01,竣工结算书,是,3,1,JS-01-竣工结算书.pdf,是,是,否,copies_short,“竣工结算书”（JS-01）应有 3 份，实交 1 份\n2,JS-02,工程量清单结算书,是,2,2,JS-02-工程量清单结算书.pdf,是,是,是,,\n3,JS-03,施工合同及补充协议,是,1,1,JS-03-施工合同及补充协议.pdf,是,是,是,,\n4,JS-04,招标文件与投标文件,是,1,1,JS-04-招标文件与投标文件.pdf,是,是,是,,\n5,JS-05,开工报告与竣工报告,是,1,1,JS-05-开工报告与竣工报告.pdf,是,是,是,,\n6,JS-06,施工许可证,是,1,1,JS-06-施工许可证.pdf,是,是,是,,\n7,JS-07,图纸会审纪要,是,1,1,JS-07-图纸会审纪要.pdf,是,是,是,,\n8,JS-08,设计变更通知单,是,2,0,,否,否,否,missing,必需资料“设计变更通知单”（JS-08）未提交\n9,JS-09,现场签证单,是,2,2,JS-09-现场签证单.pdf,是,是,是,,\n10,JS-10,隐蔽工程验收记录,是,1,1,JS-10-隐蔽工程验收记录.pdf,是,否,否,unstamped,“隐蔽工程验收记录”（JS-10）未盖章\n11,JS-11,分部分项工程质量验收记录,是,1,1,JS-11-分部分项工程质量验收记录.pdf,是,是,是,,\n12,JS-12,竣工验收备案表,是,1,0,,否,否,否,missing,必需资料“竣工验收备案表”（JS-12）未提交\n13,JS-13,甲供材料领用对账单,否,1,1,JS-13-甲供材料领用对账单.pdf,是,是,是,,\n14,JS-14,工期顺延与索赔资料,否,1,0,,否,否,否,optional_missing,非必需资料“工期顺延与索赔资料”（JS-14）未提交（提示）\n"
+  }
+}

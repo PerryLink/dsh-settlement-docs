@@ -1,0 +1,129 @@
+{
+  "run_id": "settlement-docs-1793635402654",
+  "scope": "SETTLEMENT-DOCS-S1",
+  "status": "pass",
+  "counted": false,
+  "note": "synthetic settlement-document checklist + submission only; no customer data, no network",
+  "metrics": [
+    {
+      "req_id": "SD-A01",
+      "metric": "template item counts",
+      "threshold": "14/13/12 with 12/12/11 required",
+      "actual": "14/12 13/12 12/11",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A02",
+      "metric": "template well-formedness",
+      "threshold": "unique codes + BOM + header",
+      "actual": "39 items/39 codes",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A03",
+      "metric": "sample checklist = 房建 template",
+      "threshold": "byte-identical",
+      "actual": "63b248bde895",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A04",
+      "metric": "check checklist/submitted counts",
+      "threshold": "14 items 11 submitted",
+      "actual": "14 items 11 submitted",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A05",
+      "metric": "missing documents",
+      "threshold": "2 required + 1 optional",
+      "actual": "required=2 optional=1",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A06",
+      "metric": "short copies",
+      "threshold": "1 (JS-01 1/3)",
+      "actual": "1",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A07",
+      "metric": "signature/stamp",
+      "threshold": "unsigned 0 unstamped 1",
+      "actual": "unsigned=0 unstamped=1",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A08",
+      "metric": "headline completeness rate",
+      "threshold": "66.67% (8/12)",
+      "actual": "66.67% (8/12)",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A09",
+      "metric": "overall completeness rate",
+      "threshold": "64.29% (9/14)",
+      "actual": "64.29% (9/14)",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A10",
+      "metric": "export sha256/rows/BOM",
+      "threshold": "sha equals file rows=15 BOM=yes",
+      "actual": "15 rows 1638 bytes",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A11",
+      "metric": "export path safety",
+      "threshold": "traversal rejected",
+      "actual": "E_SETTLEMENT_PATH_INVALID",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A12",
+      "metric": "duplicate code error",
+      "threshold": "E_SETTLEMENT_DUP_CODE",
+      "actual": "E_SETTLEMENT_DUP_CODE",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A13",
+      "metric": "unknown code error",
+      "threshold": "E_SETTLEMENT_UNKNOWN_CODE",
+      "actual": "E_SETTLEMENT_UNKNOWN_CODE",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A14",
+      "metric": "empty checklist error",
+      "threshold": "E_SETTLEMENT_EMPTY",
+      "actual": "E_SETTLEMENT_EMPTY",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A15",
+      "metric": "row value error",
+      "threshold": "E_SETTLEMENT_CSV_ROW",
+      "actual": "E_SETTLEMENT_CSV_ROW",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A16",
+      "metric": "unknown project type error",
+      "threshold": "E_SETTLEMENT_UNKNOWN_CODE",
+      "actual": "E_SETTLEMENT_UNKNOWN_CODE",
+      "pass": true
+    },
+    {
+      "req_id": "SD-A17",
+      "metric": "percent integer rounding",
+      "threshold": "1/3=33.33 2/3=66.67",
+      "actual": "33.33 66.67",
+      "pass": true
+    }
+  ],
+  "pass": true
+}

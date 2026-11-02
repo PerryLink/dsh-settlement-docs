@@ -1,0 +1,15 @@
+[
+  {
+    "path": "docs/assets/quickstart.png",
+    "kind": "quickstart",
+    "alt": "dsh-settlement-docs quickstart terminal output",
+    "caption": "Real command: node samples/quickstart/run.mjs --check — a synthetic 14-item housing checklist (12 required / 2 optional) against 11 submitted files yields 2 required + 1 optional missing, 1 short copy, 1 missing stamp, 66.67% required completeness (8/12) and a 15-row review worksheet. Rendered from the captured terminal output with the CJK font msyh.ttc.",
+    "command": "node samples/quickstart/run.mjs --check",
+    "run_at": "2026-11-02T16:01:07Z",
+    "output_sha256": "b0ff2f96af53757c8c47ac3ed3ec5ea62fcf76bea6facd7eb7b44a552b53cb1f",
+    "output_path": "samples/quickstart/expected/result.json",
+    "log": "docs/assets/quickstart.log",
+    "log_sha256": "3045252ebdda5a61c8d83d0c2cc15447673366915c7850ea7bb92429c10206b5",
+    "image_sha256": "52baf454751b23c8ae23fa0465c30f92ea5020fbd1cc7ab9eb2c8a9f3322f317"
+  }
+]
