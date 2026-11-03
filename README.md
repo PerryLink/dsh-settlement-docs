@@ -100,7 +100,7 @@ Not as a statutory register. It is a **minimal starting point** (housing 14, mun
 
 ## Version
 
-`0.1.0-alpha.1` · 72 tests pass (`node --test test/*.test.mjs`).
+`0.1.0` · 72 tests pass (`node --test test/*.test.mjs`).
 
 > ⭐ If this helps, a star makes it easier for the next person to find it. Nothing is gated behind it.
 

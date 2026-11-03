@@ -1,19 +1,19 @@
 req_id,metric,threshold,actual,script,evidence_sha256,pass,source,counted
-SD-A01,template item counts,14/13/12 with 12/12/11 required,14/12 13/12 12/11,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A02,template well-formedness,unique codes + BOM + header,39 items/39 codes,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A03,sample checklist = 房建 template,byte-identical,63b248bde895,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A04,check checklist/submitted counts,14 items 11 submitted,14 items 11 submitted,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A05,missing documents,2 required + 1 optional,required=2 optional=1,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A06,short copies,1 (JS-01 1/3),1,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A07,signature/stamp,unsigned 0 unstamped 1,unsigned=0 unstamped=1,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A08,headline completeness rate,66.67% (8/12),66.67% (8/12),scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A09,overall completeness rate,64.29% (9/14),64.29% (9/14),scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A10,export sha256/rows/BOM,sha equals file rows=15 BOM=yes,15 rows 1638 bytes,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A11,export path safety,traversal rejected,E_SETTLEMENT_PATH_INVALID,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A12,duplicate code error,E_SETTLEMENT_DUP_CODE,E_SETTLEMENT_DUP_CODE,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A13,unknown code error,E_SETTLEMENT_UNKNOWN_CODE,E_SETTLEMENT_UNKNOWN_CODE,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A14,empty checklist error,E_SETTLEMENT_EMPTY,E_SETTLEMENT_EMPTY,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A15,row value error,E_SETTLEMENT_CSV_ROW,E_SETTLEMENT_CSV_ROW,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A16,unknown project type error,E_SETTLEMENT_UNKNOWN_CODE,E_SETTLEMENT_UNKNOWN_CODE,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
-SD-A17,percent integer rounding,1/3=33.33 2/3=66.67,33.33 66.67,scripts/acceptance.mjs,68c87c02dd395b3536c0dd1d1d642fc9a34ee5b257fdc745ede11d95734177e8,true,public/synthetic,false
+SD-A01,template item counts,14/13/12 with 12/12/11 required,14/12 13/12 12/11,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A02,template well-formedness,unique codes + BOM + header,39 items/39 codes,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A03,sample checklist = 房建 template,byte-identical,63b248bde895,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A04,check checklist/submitted counts,14 items 11 submitted,14 items 11 submitted,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A05,missing documents,2 required + 1 optional,required=2 optional=1,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A06,short copies,1 (JS-01 1/3),1,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A07,signature/stamp,unsigned 0 unstamped 1,unsigned=0 unstamped=1,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A08,headline completeness rate,66.67% (8/12),66.67% (8/12),scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A09,overall completeness rate,64.29% (9/14),64.29% (9/14),scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A10,export sha256/rows/BOM,sha equals file rows=15 BOM=yes,15 rows 1638 bytes,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A11,export path safety,traversal rejected,E_SETTLEMENT_PATH_INVALID,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A12,duplicate code error,E_SETTLEMENT_DUP_CODE,E_SETTLEMENT_DUP_CODE,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A13,unknown code error,E_SETTLEMENT_UNKNOWN_CODE,E_SETTLEMENT_UNKNOWN_CODE,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A14,empty checklist error,E_SETTLEMENT_EMPTY,E_SETTLEMENT_EMPTY,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A15,row value error,E_SETTLEMENT_CSV_ROW,E_SETTLEMENT_CSV_ROW,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A16,unknown project type error,E_SETTLEMENT_UNKNOWN_CODE,E_SETTLEMENT_UNKNOWN_CODE,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
+SD-A17,percent integer rounding,1/3=33.33 2/3=66.67,33.33 66.67,scripts/acceptance.mjs,6558cb972b4965c6a27c1a864e1c304a0de0651067eeca2ce3f36733610cb727,true,public/synthetic,false
 PS1-QS01,quickstart golden,1/1,1,samples/quickstart/run.mjs,b0ff2f96af53757c8c47ac3ed3ec5ea62fcf76bea6facd7eb7b44a552b53cb1f,true,synthetic/quickstart,true
