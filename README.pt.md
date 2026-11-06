@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-dark.svg">
-  <img src="docs/assets/dsh-settlement-docs-flow-light.svg" width="100%" alt="Fluxo do dsh-settlement-docs: CSV da lista + CSV de entrega → settlement.check (faltantes / cópias insuficientes / sem assinatura / sem carimbo) → taxa de completude → settlement.export → CSV da planilha de revisão em $DSH_HOME/dsh-settlement-docs/exports/; tudo local, arquivos de origem somente leitura">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-hero-en-dark.webp">
+  <img src="docs/assets/dsh-settlement-docs-hero-en-light.webp" width="100%" alt="Banner do dsh-settlement-docs: à esquerda o nome, duas frases de valor, o subtítulo do fluxo e o rodapé; à direita a folha de conferência do settlement.check — as 14 linhas da lista residencial com cópias exigidas/entregues, marcas de assinatura/carimbo e veredicto: JS-01 com cópias insuficientes, JS-08 e JS-12 faltantes, JS-10 sem carimbo e JS-14 opcional ausente; o rodapé mostra completude 66.67% (8/12 exigidos), global 64.29% (9/14), 4 bloqueantes / 1 aviso e o recibo de exportação de 15 linhas; números do exemplo quickstart">
 </picture>
 
 # dsh-settlement-docs
@@ -36,6 +36,11 @@ Alinha “quais documentos de liquidação final deveriam ter sido entregues” 
 
 - **Serve:** responsáveis pela documentação de liquidação em contratada principal, subcontratada, proprietário ou fiscalização fazendo uma autoconferência de completude antes de entregar; um tipo de obra fixo (residencial / municipal / decoração) com uma lista de dezenas de itens; precisar de uma única lista do que falta, quantas cópias faltam e qual carimbo está ausente; precisar de uma planilha que abra limpa no Excel.
 - **Não serve:** substituir aceitação de arquivo, registro de conclusão ou parecer jurídico; OCR de PDF/escaneados/imagens (somente CSV, o conteúdo nunca é lido); julgar se um documento é autêntico ou se uma assinatura é autorizada; livros de vários projetos ou seções (uma lista por execução).
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-settlement-docs: o CSV da lista (código/nome/cópias exigidas/obrigatório) e o CSV de entrega (código/arquivo/cópias/assinatura/carimbo) alinham-se por código em 14 linhas; cada linha passa quatro portões — não entregue → missing ou optional_missing, cópias insuficientes → copies_short, sem assinatura → unsigned, sem carimbo → unstamped, e só 4/4 é complete; o placar dá 66.67% (8/12 exigidos), 64.29% global (9/14) e 4 bloqueantes / 1 aviso; settlement.export grava a planilha de 15 linhas em $DSH_HOME/dsh-settlement-docs/exports/">
+</picture>
 
 ## Instalação em três passos
 
@@ -263,7 +268,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-Versão atual `0.1.0`, 72 testes passando (`node --test test/*.test.mjs`). O portão de publicação `node scripts/gate.mjs` = lint de metadados + todas as linhas públicas de aceitação passando + a linha dourada do quickstart presente. O diagrama de topo é gerado por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow, SVG puro, rótulos de tokens de comando, variantes clara e escura; não há dados de benchmark, então nenhum gráfico de evidência é emitido) e pode ser executado de novo; `docs/assets/quickstart.png` é uma captura real mantida junto com `docs/assets/quickstart.log`.
+Versão atual `0.1.0`, 72 testes passando (`node --test test/*.test.mjs`). O portão de publicação `node scripts/gate.mjs` = lint de metadados + todas as linhas públicas de aceitação passando + a linha dourada do quickstart presente. O banner inicial e o diagrama de estrutura são gerados por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow produz o webp claro/escuro de 1440×576, um SVG escrito à mão produz o diagrama de 1100×660; cada número é copiado de `samples/quickstart/expected/result.json`; não há dados de benchmark, então nenhum gráfico de evidência é emitido) e pode ser executado de novo; `docs/assets/quickstart.png` é uma captura real mantida junto com `docs/assets/quickstart.log`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `settlement`, `completion-documents`, `construction`, `document-checklist`, `csv`, `perrylink`
 

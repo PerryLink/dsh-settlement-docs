@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-dark.svg">
-  <img src="docs/assets/dsh-settlement-docs-flow-light.svg" width="100%" alt="dsh-settlement-docs प्रवाह: चेकलिस्ट CSV + जमा CSV → settlement.check (गुम / कम प्रतियाँ / हस्ताक्षर नहीं / मुहर नहीं) → पूर्णता दर → settlement.export → $DSH_HOME/dsh-settlement-docs/exports/ में समीक्षा वर्कशीट CSV; पूरी तरह लोकल, स्रोत फ़ाइलें केवल पढ़ने योग्य">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-hero-en-dark.webp">
+  <img src="docs/assets/dsh-settlement-docs-hero-en-light.webp" width="100%" alt="dsh-settlement-docs बैनर: बाईं ओर नाम, मूल्य की दो पंक्तियाँ, प्रवाह उपशीर्षक और फ़ुटर; दाईं ओर settlement.check की पूर्णता जाँच शीट — आवासीय चेकलिस्ट की 14 पंक्तियाँ, आवश्यक/जमा प्रतियाँ, हस्ताक्षर/मुहर चिह्न और निर्णय: JS-01 में प्रतियाँ कम, JS-08 और JS-12 गुम, JS-10 पर मुहर नहीं और JS-14 वैकल्पिक अनुपस्थित; फ़ुटर में पूर्णता 66.67% (8/12 आवश्यक), कुल 64.29% (9/14), 4 अवरोधक / 1 सूचना और 15 पंक्तियों की वर्कशीट निर्यात रसीद; आँकड़े quickstart गोल्डन नमूने से">
 </picture>
 
 # dsh-settlement-docs
@@ -36,6 +36,11 @@ dsh plugin --profile <profile> add dsh-settlement-docs
 
 - **किसके लिए उपयुक्त:** मुख्य ठेकेदार, उप-ठेकेदार, मालिक या पर्यवेक्षण के निपटान-दस्तावेज़ प्रभारी, जो प्रस्तुति से पहले पूर्णता की स्व-जाँच करते हैं; एक निश्चित परियोजना प्रकार (आवासीय / नगरपालिका / सजावट) और कुछ दर्जन मदों की सूची; एक ही सूची में यह देखना कि क्या गुम है, कितनी प्रतियाँ कम हैं और कौन-सी मुहर अनुपस्थित है; ऐसी वर्कशीट जो Excel में साफ़ खुले।
 - **किसके लिए नहीं:** अभिलेख स्वीकृति, पूर्णता पंजीकरण या कानूनी सलाह का विकल्प बनना; स्कैन किए PDF/छवियों का OCR (केवल CSV, फ़ाइल सामग्री नहीं पढ़ी जाती); दस्तावेज़ की सत्यता या हस्ताक्षर के अधिकार का निर्णय; बहु-परियोजना या बहु-खंड बही (एक बार में एक परियोजना की सूची)।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="dsh-settlement-docs संरचना: चेकलिस्ट CSV (कोड/नाम/आवश्यक प्रतियाँ/आवश्यक) और जमा CSV (कोड/फ़ाइल/प्रतियाँ/हस्ताक्षर/मुहर) कोड पर मिलकर 14 पंक्तियाँ बनाते हैं; हर पंक्ति चार द्वार पार करती है — जमा नहीं → missing या optional_missing, कम प्रतियाँ → copies_short, हस्ताक्षर नहीं → unsigned, मुहर नहीं → unstamped, और केवल 4/4 ही complete है; स्कोरबोर्ड 66.67% (8/12 आवश्यक), कुल 64.29% (9/14) और 4 अवरोधक / 1 सूचना देता है; settlement.export 15 पंक्तियों की वर्कशीट $DSH_HOME/dsh-settlement-docs/exports/ में लिखता है">
+</picture>
 
 ## तीन चरणों में शुरुआत
 
@@ -263,7 +268,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-वर्तमान संस्करण `0.1.0`, 72 टेस्ट पास (`node --test test/*.test.mjs`)। रिलीज़ गेट `node scripts/gate.mjs` = मेटाडेटा lint + सभी सार्वजनिक स्वीकृति पंक्तियाँ पास + quickstart गोल्डन पंक्ति मौजूद। शीर्ष आरेख [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनता है (Python + Pillow, शुद्ध SVG, कमांड टोकन लेबल, हल्का और गहरा संस्करण; benchmark डेटा नहीं है, इसलिए evidence चार्ट नहीं बनता) और दोबारा चलाया जा सकता है; `docs/assets/quickstart.png` वास्तविक रन कैप्चर है और `docs/assets/quickstart.log` के साथ रखा गया है।
+वर्तमान संस्करण `0.1.0`, 72 टेस्ट पास (`node --test test/*.test.mjs`)। रिलीज़ गेट `node scripts/gate.mjs` = मेटाडेटा lint + सभी सार्वजनिक स्वीकृति पंक्तियाँ पास + quickstart गोल्डन पंक्ति मौजूद। शुरुआती बैनर और संरचना आरेख [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं (Pillow 1440×576 का हल्का/गहरा webp बनाता है, हाथ से लिखा SVG 1100×660 का संरचना आरेख बनाता है; हर संख्या `samples/quickstart/expected/result.json` से शब्दशः ली गई है; benchmark डेटा नहीं है, इसलिए evidence चार्ट नहीं बनता) और दोबारा चलाया जा सकता है; `docs/assets/quickstart.png` वास्तविक रन कैप्चर है और `docs/assets/quickstart.log` के साथ रखा गया है।
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `settlement`, `completion-documents`, `construction`, `document-checklist`, `csv`, `perrylink`
 

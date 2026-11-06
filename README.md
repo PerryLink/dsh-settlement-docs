@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-dark.svg">
-  <img src="docs/assets/dsh-settlement-docs-flow-light.svg" width="100%" alt="dsh-settlement-docs 流程：资料清单 CSV + 实际提交 CSV → settlement.check 对齐（缺件 / 份数不足 / 未签字 / 未盖章）→ 齐套率 → settlement.export → $DSH_HOME/dsh-settlement-docs/exports/ 核对表 CSV；全程本地，源文件只读">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-settlement-docs-hero-zh-light.webp" width="100%" alt="dsh-settlement-docs 横幅：左列是插件名、两行价值句、流程副标与页脚；右侧是 settlement.check 的齐套核对表——房建清单 14 项逐行给出应有/实交份数、签字/盖章与判定：JS-01 份数不足、JS-08 与 JS-12 缺件、JS-10 未盖章、JS-14 非必需缺失；底部为齐套率 66.67%（8/12 必需）、全量完整率 64.29%（9/14）、4 个阻塞 / 1 个提示和 15 行核对表导出回执；数字取自 quickstart 金标样例">
 </picture>
 
 # dsh-settlement-docs
@@ -36,6 +36,11 @@ dsh plugin --profile <profile> add dsh-settlement-docs
 
 - **适合**：总包、分包、业主方和监理的结算资料员，在送审或归档前做一次齐套自检；项目类型固定（房建 / 市政 / 装饰），资料清单几十项以内；需要把“缺什么、差几份、谁没签章”一次性交给经办人；需要一份能直接发出去、Excel 打开不乱码的核对表。
 - **不适合**：替代档案验收、竣工备案或法律意见；扫描件/PDF/图片的 OCR（只收 CSV，不读文件内容）；判断资料内容是否真实、签字是否有效；多项目、多标段台账（本包一次只核对一个项目的清单）。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="dsh-settlement-docs 结构：资料清单 CSV（资料编码/资料名称/应有份数/是否必需）与实际提交 CSV（资料编码/文件名/份数/签字/盖章）按编码对齐成 14 行；每行依次过四道判定——未提交→missing 或 optional_missing，份数不足→copies_short，未签字→unsigned，未盖章→unstamped，四项全过才 complete；右侧记分台给出齐套率 66.67%（8/12 必需）、全量 64.29%（9/14）与 4 个阻塞 / 1 个提示；settlement.export 把 15 行核对表写到 $DSH_HOME/dsh-settlement-docs/exports/">
+</picture>
 
 ## 三步上手
 
@@ -262,7 +267,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-当前版本 `0.1.0`，72 项测试通过（`node --test test/*.test.mjs`）。发布门禁 `node scripts/gate.mjs` = 元数据 lint + 公开验收行全过 + quickstart 金标行存在。开头流程图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Python + Pillow，纯 SVG、命令 token 文案、深浅双版；没有 benchmark 数据，所以不生成 evidence 图），可重复执行；`docs/assets/quickstart.png` 为真实运行截图，配合 `docs/assets/quickstart.log` 保留。
+当前版本 `0.1.0`，72 项测试通过（`node --test test/*.test.mjs`）。发布门禁 `node scripts/gate.mjs` = 元数据 lint + 公开验收行全过 + quickstart 金标行存在。开头横幅与结构图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 出 1440×576 深浅双版 webp，手写 SVG 出 1100×660 结构图；图内数字逐字取自 `samples/quickstart/expected/result.json`；没有 benchmark 数据，所以不生成 evidence 图），可重复执行；`docs/assets/quickstart.png` 为真实运行截图，配合 `docs/assets/quickstart.log` 保留。
 
 Topics：`dsh`、`dsh-plugin`、`deepseek-harness`、`settlement`、`completion-documents`、`construction`、`document-checklist`、`csv`、`perrylink`
 
