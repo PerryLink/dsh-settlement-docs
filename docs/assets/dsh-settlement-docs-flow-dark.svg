@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" role="img" aria-label="dsh-settlement-docs pipeline">
+<title>dsh-settlement-docs pipeline</title>
+<rect width="1200" height="400" rx="18" fill="#0d1117"/>
+<text x="40" y="62" fill="#f0f6fc" font-family="ui-sans-serif,system-ui,sans-serif" font-size="30" font-weight="700">dsh-settlement-docs</text>
+<text x="40" y="94" fill="#8b949e" font-family="ui-monospace,monospace" font-size="16">settlement.check → settlement.export · CSV in, CSV out · local only</text>
+<line x1="40" y1="116" x2="1160" y2="116" stroke="#30363d"/>
+<rect x="40" y="150" width="200" height="96" rx="14" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+<text x="140" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" font-weight="700">checklist.csv</text>
+<text x="140" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10">submitted.csv · UTF-8</text>
+<path d="M244 198h18" stroke="#8b949e" stroke-width="3"/>
+<path d="M260 191l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="270" y="150" width="200" height="96" rx="14" fill="#161b22" stroke="#4B67B4" stroke-width="2"/>
+<text x="370" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" font-weight="700">settlement.check</text>
+<text x="370" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10">missing · copies_short</text>
+<path d="M474 198h18" stroke="#8b949e" stroke-width="3"/>
+<path d="M490 191l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="500" y="150" width="200" height="96" rx="14" fill="#161b22" stroke="#4B67B4" stroke-width="2"/>
+<text x="600" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" font-weight="700">rate_pct + items[]</text>
+<text x="600" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10">8/12 required · 9/14 all</text>
+<path d="M704 198h18" stroke="#8b949e" stroke-width="3"/>
+<path d="M720 191l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="730" y="150" width="200" height="96" rx="14" fill="#161b22" stroke="#4B67B4" stroke-width="2"/>
+<text x="830" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" font-weight="700">settlement.export</text>
+<text x="830" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10">worksheet · UTF-8 BOM</text>
+<path d="M934 198h18" stroke="#8b949e" stroke-width="3"/>
+<path d="M950 191l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="960" y="150" width="200" height="96" rx="14" fill="#161b22" stroke="#3fb950" stroke-width="2"/>
+<text x="1060" y="190" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="15" font-weight="700">exports/*.csv</text>
+<text x="1060" y="218" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="10">$DSH_HOME/…/exports</text>
+<path d="M370 246v44" stroke="#4B67B4" stroke-width="2" stroke-dasharray="5 5"/>
+<path d="M830 246v44" stroke="#4B67B4" stroke-width="2" stroke-dasharray="5 5"/>
+<rect x="40" y="290" width="1120" height="52" rx="12" fill="#161b22" stroke="#4B67B4" stroke-width="2"/>
+<text x="600" y="322" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14">R0 read-only: settlement.template · settlement.check ｜ R1 local write: settlement.export ｜ no network · no model call</text>
+<text x="40" y="378" fill="#8b949e" font-family="ui-monospace,monospace" font-size="13">missing · copies_short · unsigned · unstamped (blocking) · optional_missing (info) · worksheet 15 rows · sha256</text>
+</svg>
