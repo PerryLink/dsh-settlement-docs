@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-hero-en-dark.webp">
-  <img src="docs/assets/dsh-settlement-docs-hero-en-light.webp" width="100%" alt="dsh-settlement-docs banner: the left column is the wordmark, two value lines, flow subtitle and footer; on the right is the settlement.check completeness sheet — all 14 housing-checklist lines with required/submitted copies, signature/stamp markers and verdict: JS-01 short on copies, JS-08 and JS-12 missing, JS-10 unstamped, JS-14 optional missing; the footer shows completeness 66.67% (8/12 required), overall 64.29% (9/14), 4 blocking / 1 info and the 15-row worksheet export receipt; numbers come from the quickstart golden fixture">
+  <img src="docs/assets/dsh-settlement-docs-hero-en-light.webp" width="100%" alt="dsh-settlement-docs banner: the left column is the wordmark, two value lines, flow subtitle and footer; on the right is the settlement_check completeness sheet — all 14 housing-checklist lines with required/submitted copies, signature/stamp markers and verdict: JS-01 short on copies, JS-08 and JS-12 missing, JS-10 unstamped, JS-14 optional missing; the footer shows completeness 66.67% (8/12 required), overall 64.29% (9/14), 4 blocking / 1 info and the 15-row worksheet export receipt; numbers come from the quickstart golden fixture">
 </picture>
 
 # dsh-settlement-docs
@@ -39,7 +39,7 @@ Align “which final-settlement documents should have been handed over” with �
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-v5-dark.svg">
-  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="dsh-settlement-docs structure: the checklist CSV (code/name/required copies/required) and the submission CSV (code/filename/copies/signed/stamped) join on the document code into 14 lines; each line walks four gates — not submitted → missing or optional_missing, short copies → copies_short, not signed → unsigned, not stamped → unstamped, and only 4/4 is complete; the scoreboard reports 66.67% (8/12 required), 64.29% overall (9/14) and 4 blocking / 1 info; settlement.export writes the 15-row worksheet under $DSH_HOME/dsh-settlement-docs/exports/">
+  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="dsh-settlement-docs structure: the checklist CSV (code/name/required copies/required) and the submission CSV (code/filename/copies/signed/stamped) join on the document code into 14 lines; each line walks four gates — not submitted → missing or optional_missing, short copies → copies_short, not signed → unsigned, not stamped → unstamped, and only 4/4 is complete; the scoreboard reports 66.67% (8/12 required), 64.29% overall (9/14) and 4 blocking / 1 info; settlement_export writes the 15-row worksheet under $DSH_HOME/dsh-settlement-docs/exports/">
 </picture>
 
 ## Three-step setup
@@ -78,9 +78,9 @@ Tool names are stable API; tool descriptions stay in English to match runtime ou
 
 | Tool | Purpose | Risk |
 |---|---|---|
-| `settlement.template` | Generate the built-in checklist template CSV for a project type (housing / municipal / decoration, 12+ items each); returns text and counts | R0 |
-| `settlement.check` | Compare checklist vs submission: missing, short copies, missing signature/stamp, optional absent, completeness rate | R0 |
-| `settlement.export` | Re-run the check and write the worksheet CSV (UTF-8 BOM); returns path, rows, bytes and sha256 | R1 local write |
+| `settlement_template` | Generate the built-in checklist template CSV for a project type (housing / municipal / decoration, 12+ items each); returns text and counts | R0 |
+| `settlement_check` | Compare checklist vs submission: missing, short copies, missing signature/stamp, optional absent, completeness rate | R0 |
+| `settlement_export` | Re-run the check and write the worksheet CSV (UTF-8 BOM); returns path, rows, bytes and sha256 | R1 local write |
 
 - **Checklist-driven** — one checklist CSV and one submission CSV are aligned by document code; a code that does not match stops the run instead of silently counting a missing document as submitted.
 - **Four issue types + completeness rate** — missing, short copies, unsigned and unstamped are counted separately; the required completeness rate covers required documents only, and a second overall rate includes optional documents.
@@ -109,9 +109,9 @@ Accepted Chinese headers (also valid):
 
 ## Output
 
-- `settlement.template`: built-in checklist template CSV text, project type, total/required/optional item counts, bytes and sha256. **No file is written.**
-- `settlement.check`: `summary` (checklist items, submitted, missing, short copies, unsigned, unstamped, optional missing, completeness rate, blocking/info counts), an `issues` list in checklist order, and merged per-item `items`.
-- `settlement.export`: review worksheet CSV (UTF-8 BOM, opens cleanly in Excel), one row per checklist line with issue type and message; written to `$DSH_HOME/dsh-settlement-docs/exports/`; returns path, rows, bytes and sha256. Without `filename` it writes `settlement-check.csv` (same-name files are overwritten).
+- `settlement_template`: built-in checklist template CSV text, project type, total/required/optional item counts, bytes and sha256. **No file is written.**
+- `settlement_check`: `summary` (checklist items, submitted, missing, short copies, unsigned, unstamped, optional missing, completeness rate, blocking/info counts), an `issues` list in checklist order, and merged per-item `items`.
+- `settlement_export`: review worksheet CSV (UTF-8 BOM, opens cleanly in Excel), one row per checklist line with issue type and message; written to `$DSH_HOME/dsh-settlement-docs/exports/`; returns path, rows, bytes and sha256. Without `filename` it writes `settlement-check.csv` (same-name files are overwritten).
 - The source CSVs are never modified; no upload, no network, no model call.
 
 ### Check rules
@@ -149,24 +149,24 @@ This plugin has **no Config keys** — it is fully usable once mounted, and ever
 
 | Tool | Parameter | Required | Meaning |
 |---|---|---|---|
-| `settlement.template` | `project_type` | yes | Project type: `housing`, `municipal` or `decoration` (the Chinese names are also accepted) |
-| `settlement.check` | `checklist_csv` | yes | Checklist CSV text (the tool surface takes the file content directly) |
-| `settlement.check` | `submission_csv` | yes | Actual-submission CSV text |
-| `settlement.export` | `checklist_csv` | yes | Same as above |
-| `settlement.export` | `submission_csv` | yes | Same as above |
-| `settlement.export` | `filename` | no | Export file name, `[A-Za-z0-9._-]` only, at most 120 characters; defaults to `settlement-check.csv` |
+| `settlement_template` | `project_type` | yes | Project type: `housing`, `municipal` or `decoration` (the Chinese names are also accepted) |
+| `settlement_check` | `checklist_csv` | yes | Checklist CSV text (the tool surface takes the file content directly) |
+| `settlement_check` | `submission_csv` | yes | Actual-submission CSV text |
+| `settlement_export` | `checklist_csv` | yes | Same as above |
+| `settlement_export` | `submission_csv` | yes | Same as above |
+| `settlement_export` | `filename` | no | Export file name, `[A-Za-z0-9._-]` only, at most 120 characters; defaults to `settlement-check.csv` |
 
 Call example (tool surface):
 
 ```sh
 # 1) generate a template (tool surface)
-#    settlement.template({ project_type: "housing" })
+#    settlement_template({ project_type: "housing" })
 
 # 2) check (tool surface)
-#    settlement.check({ checklist_csv, submission_csv })
+#    settlement_check({ checklist_csv, submission_csv })
 
 # 3) export the worksheet (tool surface)
-#    settlement.export({ checklist_csv, submission_csv, filename: "settlement-check-2026-11.csv" })
+#    settlement_export({ checklist_csv, submission_csv, filename: "settlement-check-2026-11.csv" })
 ```
 
 For tests, the `DSH_SETTLEMENT_DOCS_HOME` environment variable overrides the local write root; by default it is exactly `$DSH_HOME/dsh-settlement-docs`.
@@ -222,7 +222,7 @@ Write: `$DSH_HOME/dsh-settlement-docs/exports/` (review worksheet CSV) only; sou
 Network: no.
 External systems: none.
 
-`settlement.template` and `settlement.check` are **R0** (read-only; the template lives in memory). `settlement.export` is **R1** (local write under `$DSH_HOME/dsh-settlement-docs`). `DSH_SETTLEMENT_DOCS_HOME` can override the local write root for tests; by default it is exactly `$DSH_HOME/dsh-settlement-docs`.
+`settlement_template` and `settlement_check` are **R0** (read-only; the template lives in memory). `settlement_export` is **R1** (local write under `$DSH_HOME/dsh-settlement-docs`). `DSH_SETTLEMENT_DOCS_HOME` can override the local write root for tests; by default it is exactly `$DSH_HOME/dsh-settlement-docs`.
 
 ## Acceptance evidence
 
@@ -276,7 +276,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-Current version `0.1.0` with 72 tests passing (`node --test test/*.test.mjs`). The release gate `node scripts/gate.mjs` = metadata lint + every public acceptance row passing + the quickstart golden row present. The opening banner and structure diagram are generated by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow renders the 1440×576 light/dark webp, a hand-written SVG renders the 1100×660 structure diagram; every number is copied from `samples/quickstart/expected/result.json`; no benchmark data exists, so no evidence chart is emitted) and can be re-run safely; `docs/assets/quickstart.png` is a real run capture kept together with `docs/assets/quickstart.log`.
+Current version `0.2.0` with 73 tests passing (`node --test test/*.test.mjs`). The release gate `node scripts/gate.mjs` = metadata lint + every public acceptance row passing + the quickstart golden row present. The opening banner and structure diagram are generated by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow renders the 1440×576 light/dark webp, a hand-written SVG renders the 1100×660 structure diagram; every number is copied from `samples/quickstart/expected/result.json`; no benchmark data exists, so no evidence chart is emitted) and can be re-run safely; `docs/assets/quickstart.png` is a real run capture kept together with `docs/assets/quickstart.log`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `settlement`, `completion-documents`, `construction`, `document-checklist`, `csv`, `perrylink`
 

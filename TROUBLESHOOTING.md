@@ -18,14 +18,14 @@
 ## 3. 未知资料编码 / 未知工程类型（E_SETTLEMENT_UNKNOWN_CODE）
 
 - **症状**：`资料编码或工程类型不在已知集合里（E_SETTLEMENT_UNKNOWN_CODE）｜下一步：核对编码是否笔误，工程类型只支持 房建/市政/装饰；确属新增资料就先补进资料清单再核对｜细节：实际提交清单里有资料清单中没有的编码：JS-99`
-- **原因**：实际提交清单引用了资料清单里没有的编码（最常见是笔误，例如把 `JS-08` 写成 `JS-09`）；或 `settlement.template` 的 `project_type` 传了 `桥梁`、`房建类` 这类不支持的写法。
+- **原因**：实际提交清单引用了资料清单里没有的编码（最常见是笔误，例如把 `JS-08` 写成 `JS-09`）；或 `settlement_template` 的 `project_type` 传了 `桥梁`、`房建类` 这类不支持的写法。
 - **动作**：先核对编码；确属新增资料，就把该资料补进资料清单（一行）再核对。工程类型只传 `房建`、`市政` 或 `装饰`（英文 `housing`/`municipal`/`decoration` 也接受）。**不要**为了跑通而删掉未知编码——那会把齐套率算高。
 
 ## 4. 资料清单为空（E_SETTLEMENT_EMPTY）
 
-- **症状**：`清单是空的，只有表头或者一个字都没有（E_SETTLEMENT_EMPTY）｜下一步：资料清单用 settlement.template 生成并至少填一项；实际提交清单至少保留表头（只有表头表示一份都没交）｜细节：实际提交清单是空的（0 字节或只有空白）`
+- **症状**：`清单是空的，只有表头或者一个字都没有（E_SETTLEMENT_EMPTY）｜下一步：资料清单用 settlement_template 生成并至少填一项；实际提交清单至少保留表头（只有表头表示一份都没交）｜细节：实际提交清单是空的（0 字节或只有空白）`
 - **原因**：资料清单文件 0 字节、只有表头、或导出时选错了工作表。**实际提交清单**只有表头是合法的，报这个错一定出在资料清单一侧。
-- **动作**：先调用 `settlement.template({ project_type: "房建" })` 生成模板，保存后至少保留一项再核对；实际提交清单可以只有表头（齐套率 0%）。
+- **动作**：先调用 `settlement_template({ project_type: "房建" })` 生成模板，保存后至少保留一项再核对；实际提交清单可以只有表头（齐套率 0%）。
 
 ## 5. 导出路径不可用（E_SETTLEMENT_PATH_INVALID）
 
@@ -51,9 +51,9 @@
 
 ```sh
 node samples/quickstart/run.mjs --check   # 自带样例必须通过
-node --test test/*.test.mjs               # 72 项测试
+node --test test/*.test.mjs               # 73 项测试
 node scripts/gate.mjs                     # 元数据 + 验收门
 ```
 
 仍失败时请在 <https://github.com/PerryLink/dsh-settlement-docs/issues> 附上：包版本、最小合成清单
-（或生成脚本）、`settlement.check` 的完整报错行、Node 与 DSH 版本。**不要附真实结算资料或客户文件名。**
+（或生成脚本）、`settlement_check` 的完整报错行、Node 与 DSH 版本。**不要附真实结算资料或客户文件名。**

@@ -30,7 +30,7 @@ const SETTLEMENT_HUMAN: Record<SettlementErrorCode, HumanMessage> = {
   },
   E_SETTLEMENT_EMPTY: {
     text: '清单是空的，只有表头或者一个字都没有',
-    next: '资料清单用 settlement.template 生成并至少填一项；实际提交清单至少保留表头（只有表头表示一份都没交）',
+    next: '资料清单用 settlement_template 生成并至少填一项；实际提交清单至少保留表头（只有表头表示一份都没交）',
   },
 }
 

@@ -113,7 +113,7 @@ export function templateCsv(projectType: ProjectType): string {
   return `\uFEFF${toCsv([[...CHECKLIST_HEADER], ...rows])}`
 }
 
-/** `settlement.template` body: template CSV plus counts and a content hash. */
+/** `settlement_template` body: template CSV plus counts and a content hash. */
 export function buildTemplate(projectTypeInput: string | undefined): TemplateResult {
   const projectType = normalizeProjectType(projectTypeInput)
   const items = CHECKLIST_TEMPLATES[projectType].map((item) => ({ ...item }))

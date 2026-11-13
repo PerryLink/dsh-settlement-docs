@@ -197,7 +197,7 @@ export function checkDocuments(checklistCsv: string, submissionCsv: string): Che
   return { summary, issues, items }
 }
 
-/** One-sentence render for `settlement.check`. */
+/** One-sentence render for `settlement_check`. */
 export function checkSentence(result: CheckResult): string {
   const s = result.summary
   return `竣工结算资料 ${s.checklist_items} 项：缺件 ${s.missing_required}、份数不足 ${s.copies_short}、未签字 ${s.unsigned}、未盖章 ${s.unstamped}、非必需缺失 ${s.optional_missing}；齐套率 ${s.rate_pct.toFixed(2)}%（${s.required_complete}/${s.required_items} 必需），${s.blocking_issues} 个阻塞 / ${s.info_issues} 个提示`

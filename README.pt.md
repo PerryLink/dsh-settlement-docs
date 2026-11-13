@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-hero-en-dark.webp">
-  <img src="docs/assets/dsh-settlement-docs-hero-en-light.webp" width="100%" alt="Banner do dsh-settlement-docs: à esquerda o nome, duas frases de valor, o subtítulo do fluxo e o rodapé; à direita a folha de conferência do settlement.check — as 14 linhas da lista residencial com cópias exigidas/entregues, marcas de assinatura/carimbo e veredicto: JS-01 com cópias insuficientes, JS-08 e JS-12 faltantes, JS-10 sem carimbo e JS-14 opcional ausente; o rodapé mostra completude 66.67% (8/12 exigidos), global 64.29% (9/14), 4 bloqueantes / 1 aviso e o recibo de exportação de 15 linhas; números do exemplo quickstart">
+  <img src="docs/assets/dsh-settlement-docs-hero-en-light.webp" width="100%" alt="Banner do dsh-settlement-docs: à esquerda o nome, duas frases de valor, o subtítulo do fluxo e o rodapé; à direita a folha de conferência do settlement_check — as 14 linhas da lista residencial com cópias exigidas/entregues, marcas de assinatura/carimbo e veredicto: JS-01 com cópias insuficientes, JS-08 e JS-12 faltantes, JS-10 sem carimbo e JS-14 opcional ausente; o rodapé mostra completude 66.67% (8/12 exigidos), global 64.29% (9/14), 4 bloqueantes / 1 aviso e o recibo de exportação de 15 linhas; números do exemplo quickstart">
 </picture>
 
 # dsh-settlement-docs
@@ -39,7 +39,7 @@ Alinha “quais documentos de liquidação final deveriam ter sido entregues” 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-v5-dark.svg">
-  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-settlement-docs: o CSV da lista (código/nome/cópias exigidas/obrigatório) e o CSV de entrega (código/arquivo/cópias/assinatura/carimbo) alinham-se por código em 14 linhas; cada linha passa quatro portões — não entregue → missing ou optional_missing, cópias insuficientes → copies_short, sem assinatura → unsigned, sem carimbo → unstamped, e só 4/4 é complete; o placar dá 66.67% (8/12 exigidos), 64.29% global (9/14) e 4 bloqueantes / 1 aviso; settlement.export grava a planilha de 15 linhas em $DSH_HOME/dsh-settlement-docs/exports/">
+  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-settlement-docs: o CSV da lista (código/nome/cópias exigidas/obrigatório) e o CSV de entrega (código/arquivo/cópias/assinatura/carimbo) alinham-se por código em 14 linhas; cada linha passa quatro portões — não entregue → missing ou optional_missing, cópias insuficientes → copies_short, sem assinatura → unsigned, sem carimbo → unstamped, e só 4/4 é complete; o placar dá 66.67% (8/12 exigidos), 64.29% global (9/14) e 4 bloqueantes / 1 aviso; settlement_export grava a planilha de 15 linhas em $DSH_HOME/dsh-settlement-docs/exports/">
 </picture>
 
 ## Instalação em três passos
@@ -78,9 +78,9 @@ Os nomes das ferramentas são API estável; as descrições ficam em inglês par
 
 | Ferramenta | Uso | Risco |
 |---|---|---|
-| `settlement.template` | Gera o CSV de modelo de lista embutido para um tipo de obra (residencial / municipal / decoração, 12+ itens cada); devolve texto e contagens | R0 |
-| `settlement.check` | Compara lista e entrega: ausentes, cópias insuficientes, assinatura/carimbo ausentes, opcionais não entregues, taxa de completude | R0 |
-| `settlement.export` | Repete a conferência e grava o CSV da planilha de revisão (UTF-8 BOM); devolve caminho, linhas, bytes e sha256 | R1 gravação local |
+| `settlement_template` | Gera o CSV de modelo de lista embutido para um tipo de obra (residencial / municipal / decoração, 12+ itens cada); devolve texto e contagens | R0 |
+| `settlement_check` | Compara lista e entrega: ausentes, cópias insuficientes, assinatura/carimbo ausentes, opcionais não entregues, taxa de completude | R0 |
+| `settlement_export` | Repete a conferência e grava o CSV da planilha de revisão (UTF-8 BOM); devolve caminho, linhas, bytes e sha256 | R1 gravação local |
 
 - **Guiado pela lista** — um CSV de lista e um CSV de entrega são alinhados por código de documento; um código que não coincide interrompe a execução em vez de contar em silêncio um documento ausente como entregue.
 - **Quatro tipos de problema + taxa** — ausentes, cópias insuficientes, sem assinatura e sem carimbo são contados separadamente; a taxa exigida cobre apenas documentos obrigatórios, e uma segunda taxa global inclui os opcionais.
@@ -101,9 +101,9 @@ Os nomes das ferramentas são API estável; as descrições ficam em inglês par
 
 ## Saída
 
-- `settlement.template`: texto CSV do modelo de lista embutido, tipo de obra, total de itens, obrigatórios/opcionais, bytes e sha256. **Nenhum arquivo é gravado.**
-- `settlement.check`: `summary` (itens da lista, entregues, ausentes, cópias insuficientes, sem assinatura, sem carimbo, opcionais ausentes, taxa de completude, contagens de bloqueio/info), uma lista `issues` na ordem da lista e `items` mesclados por item.
-- `settlement.export`: CSV da planilha de revisão (UTF-8 BOM, abre limpo no Excel), uma linha por item com tipo e mensagem do problema; gravado em `$DSH_HOME/dsh-settlement-docs/exports/`; devolve caminho, linhas, bytes e sha256. Sem `filename`, grava `settlement-check.csv` (arquivos com o mesmo nome são sobrescritos).
+- `settlement_template`: texto CSV do modelo de lista embutido, tipo de obra, total de itens, obrigatórios/opcionais, bytes e sha256. **Nenhum arquivo é gravado.**
+- `settlement_check`: `summary` (itens da lista, entregues, ausentes, cópias insuficientes, sem assinatura, sem carimbo, opcionais ausentes, taxa de completude, contagens de bloqueio/info), uma lista `issues` na ordem da lista e `items` mesclados por item.
+- `settlement_export`: CSV da planilha de revisão (UTF-8 BOM, abre limpo no Excel), uma linha por item com tipo e mensagem do problema; gravado em `$DSH_HOME/dsh-settlement-docs/exports/`; devolve caminho, linhas, bytes e sha256. Sem `filename`, grava `settlement-check.csv` (arquivos com o mesmo nome são sobrescritos).
 - Os CSVs de origem nunca são modificados; sem envio, sem rede, sem chamada ao modelo.
 
 ### Regras de verificação
@@ -141,24 +141,24 @@ Este plugin **não tem chaves Config** — fica totalmente utilizável ao ser mo
 
 | Ferramenta | Parâmetro | Obrigatório | Significado |
 |---|---|---|---|
-| `settlement.template` | `project_type` | sim | Tipo de obra: `housing`, `municipal` ou `decoration` (os nomes chineses também são aceitos) |
-| `settlement.check` | `checklist_csv` | sim | Texto do CSV da lista (a superfície de ferramenta recebe o conteúdo do arquivo) |
-| `settlement.check` | `submission_csv` | sim | Texto do CSV de entrega real |
-| `settlement.export` | `checklist_csv` | sim | Igual acima |
-| `settlement.export` | `submission_csv` | sim | Igual acima |
-| `settlement.export` | `filename` | não | Nome do arquivo de exportação, apenas `[A-Za-z0-9._-]`, no máximo 120 caracteres; padrão `settlement-check.csv` |
+| `settlement_template` | `project_type` | sim | Tipo de obra: `housing`, `municipal` ou `decoration` (os nomes chineses também são aceitos) |
+| `settlement_check` | `checklist_csv` | sim | Texto do CSV da lista (a superfície de ferramenta recebe o conteúdo do arquivo) |
+| `settlement_check` | `submission_csv` | sim | Texto do CSV de entrega real |
+| `settlement_export` | `checklist_csv` | sim | Igual acima |
+| `settlement_export` | `submission_csv` | sim | Igual acima |
+| `settlement_export` | `filename` | não | Nome do arquivo de exportação, apenas `[A-Za-z0-9._-]`, no máximo 120 caracteres; padrão `settlement-check.csv` |
 
 Exemplo de chamada (superfície de ferramenta):
 
 ```sh
 # 1) gerar um modelo (superfície de ferramenta)
-#    settlement.template({ project_type: "housing" })
+#    settlement_template({ project_type: "housing" })
 
 # 2) conferir (superfície de ferramenta)
-#    settlement.check({ checklist_csv, submission_csv })
+#    settlement_check({ checklist_csv, submission_csv })
 
 # 3) exportar a planilha (superfície de ferramenta)
-#    settlement.export({ checklist_csv, submission_csv, filename: "settlement-check-2026-11.csv" })
+#    settlement_export({ checklist_csv, submission_csv, filename: "settlement-check-2026-11.csv" })
 ```
 
 Para testes, a variável de ambiente `DSH_SETTLEMENT_DOCS_HOME` sobrescreve a raiz de gravação local; por padrão é exatamente `$DSH_HOME/dsh-settlement-docs`.
@@ -214,7 +214,7 @@ Gravação: apenas `$DSH_HOME/dsh-settlement-docs/exports/` (CSV da planilha de 
 Rede: não.
 Sistemas externos: nenhum.
 
-`settlement.template` e `settlement.check` são **R0** (somente leitura; o modelo vive na memória). `settlement.export` é **R1** (gravação local em `$DSH_HOME/dsh-settlement-docs`). `DSH_SETTLEMENT_DOCS_HOME` pode sobrescrever a raiz de gravação local para testes; por padrão é exatamente `$DSH_HOME/dsh-settlement-docs`.
+`settlement_template` e `settlement_check` são **R0** (somente leitura; o modelo vive na memória). `settlement_export` é **R1** (gravação local em `$DSH_HOME/dsh-settlement-docs`). `DSH_SETTLEMENT_DOCS_HOME` pode sobrescrever a raiz de gravação local para testes; por padrão é exatamente `$DSH_HOME/dsh-settlement-docs`.
 
 ## Evidência de aceitação
 
@@ -268,7 +268,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-Versão atual `0.1.0`, 72 testes passando (`node --test test/*.test.mjs`). O portão de publicação `node scripts/gate.mjs` = lint de metadados + todas as linhas públicas de aceitação passando + a linha dourada do quickstart presente. O banner inicial e o diagrama de estrutura são gerados por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow produz o webp claro/escuro de 1440×576, um SVG escrito à mão produz o diagrama de 1100×660; cada número é copiado de `samples/quickstart/expected/result.json`; não há dados de benchmark, então nenhum gráfico de evidência é emitido) e pode ser executado de novo; `docs/assets/quickstart.png` é uma captura real mantida junto com `docs/assets/quickstart.log`.
+Versão atual `0.2.0`, 73 testes passando (`node --test test/*.test.mjs`). O portão de publicação `node scripts/gate.mjs` = lint de metadados + todas as linhas públicas de aceitação passando + a linha dourada do quickstart presente. O banner inicial e o diagrama de estrutura são gerados por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow produz o webp claro/escuro de 1440×576, um SVG escrito à mão produz o diagrama de 1100×660; cada número é copiado de `samples/quickstart/expected/result.json`; não há dados de benchmark, então nenhum gráfico de evidência é emitido) e pode ser executado de novo; `docs/assets/quickstart.png` é uma captura real mantida junto com `docs/assets/quickstart.log`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `settlement`, `completion-documents`, `construction`, `document-checklist`, `csv`, `perrylink`
 

@@ -26,7 +26,7 @@ test('export writes a BOM CSV under exports/ and returns a matching sha256', asy
   t.after(() => rm(dir, { recursive: true, force: true }))
   const { call } = makeTools(dir)
 
-  const exported = await call('settlement.export', {
+  const exported = await call('settlement_export', {
     checklist_csv: LIST,
     submission_csv: SUBMITTED,
     filename: 'settlement-check-2026-11.csv',
@@ -53,8 +53,8 @@ test('export defaults to settlement-check.csv and can be called twice', async (t
   const dir = makeTempDir('dsh-settlement-docs-export-default-')
   t.after(() => rm(dir, { recursive: true, force: true }))
   const { call } = makeTools(dir)
-  const first = await call('settlement.export', { checklist_csv: LIST, submission_csv: SUBMITTED })
-  const second = await call('settlement.export', { checklist_csv: LIST, submission_csv: SUBMITTED })
+  const first = await call('settlement_export', { checklist_csv: LIST, submission_csv: SUBMITTED })
+  const second = await call('settlement_export', { checklist_csv: LIST, submission_csv: SUBMITTED })
   assert.equal(path.basename(first.path), 'settlement-check.csv')
   assert.equal(first.sha256, second.sha256)
 })
@@ -66,7 +66,7 @@ test('unsafe export filenames fail with E_SETTLEMENT_PATH_INVALID', async (t) =>
   for (const filename of ['../evil.csv', 'sub/dir.csv', 'a b.csv', '核对表.csv', '']) {
     await rejectsWithCode(
       assert,
-      () => call('settlement.export', { checklist_csv: LIST, submission_csv: SUBMITTED, filename }),
+      () => call('settlement_export', { checklist_csv: LIST, submission_csv: SUBMITTED, filename }),
       'E_SETTLEMENT_PATH_INVALID',
     )
   }
@@ -79,7 +79,7 @@ test('export re-runs the check, so unknown codes still fail before writing', asy
   await rejectsWithCode(
     assert,
     () =>
-      call('settlement.export', {
+      call('settlement_export', {
         checklist_csv: LIST,
         submission_csv: submission(['Z-9,z.pdf,1,是,是']),
         filename: 'x.csv',
