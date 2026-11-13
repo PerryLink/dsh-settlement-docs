@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-hero-zh-dark.webp">
-  <img src="docs/assets/dsh-settlement-docs-hero-zh-light.webp" width="100%" alt="dsh-settlement-docs 横幅：左列是插件名、两行价值句、流程副标与页脚；右侧是 settlement.check 的齐套核对表——房建清单 14 项逐行给出应有/实交份数、签字/盖章与判定：JS-01 份数不足、JS-08 与 JS-12 缺件、JS-10 未盖章、JS-14 非必需缺失；底部为齐套率 66.67%（8/12 必需）、全量完整率 64.29%（9/14）、4 个阻塞 / 1 个提示和 15 行核对表导出回执；数字取自 quickstart 金标样例">
+  <img src="docs/assets/dsh-settlement-docs-hero-zh-light.webp" width="100%" alt="dsh-settlement-docs 横幅：左列是插件名、两行价值句、流程副标与页脚；右侧是 settlement_check 的齐套核对表——房建清单 14 项逐行给出应有/实交份数、签字/盖章与判定：JS-01 份数不足、JS-08 与 JS-12 缺件、JS-10 未盖章、JS-14 非必需缺失；底部为齐套率 66.67%（8/12 必需）、全量完整率 64.29%（9/14）、4 个阻塞 / 1 个提示和 15 行核对表导出回执；数字取自 quickstart 金标样例">
 </picture>
 
 # dsh-settlement-docs
@@ -39,7 +39,7 @@ dsh plugin --profile <profile> add dsh-settlement-docs
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-v5-dark.svg">
-  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="dsh-settlement-docs 结构：资料清单 CSV（资料编码/资料名称/应有份数/是否必需）与实际提交 CSV（资料编码/文件名/份数/签字/盖章）按编码对齐成 14 行；每行依次过四道判定——未提交→missing 或 optional_missing，份数不足→copies_short，未签字→unsigned，未盖章→unstamped，四项全过才 complete；右侧记分台给出齐套率 66.67%（8/12 必需）、全量 64.29%（9/14）与 4 个阻塞 / 1 个提示；settlement.export 把 15 行核对表写到 $DSH_HOME/dsh-settlement-docs/exports/">
+  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="dsh-settlement-docs 结构：资料清单 CSV（资料编码/资料名称/应有份数/是否必需）与实际提交 CSV（资料编码/文件名/份数/签字/盖章）按编码对齐成 14 行；每行依次过四道判定——未提交→missing 或 optional_missing，份数不足→copies_short，未签字→unsigned，未盖章→unstamped，四项全过才 complete；右侧记分台给出齐套率 66.67%（8/12 必需）、全量 64.29%（9/14）与 4 个阻塞 / 1 个提示；settlement_export 把 15 行核对表写到 $DSH_HOME/dsh-settlement-docs/exports/">
 </picture>
 
 ## 三步上手
@@ -78,9 +78,9 @@ dsh plugin --profile <profile> add dsh-settlement-docs
 
 | 工具 | 用途 | 风险 |
 |---|---|---|
-| `settlement.template` | 按工程类型生成内置资料清单模板 CSV（房建 / 市政 / 装饰，各 ≥12 项），返回文本和计数 | R0 |
-| `settlement.check` | 核对清单与实际提交：缺件、份数不足、未签字/未盖章、非必需缺失、齐套率 | R0 |
-| `settlement.export` | 重跑核对并写核对表 CSV（UTF-8 BOM），返回路径、行数、字节数和 sha256 | R1 本地写 |
+| `settlement_template` | 按工程类型生成内置资料清单模板 CSV（房建 / 市政 / 装饰，各 ≥12 项），返回文本和计数 | R0 |
+| `settlement_check` | 核对清单与实际提交：缺件、份数不足、未签字/未盖章、非必需缺失、齐套率 | R0 |
+| `settlement_export` | 重跑核对并写核对表 CSV（UTF-8 BOM），返回路径、行数、字节数和 sha256 | R1 本地写 |
 
 - **清单驱动** —— 资料清单和实际提交清单各一份 CSV，按资料编码逐项对齐；编码对不上就停，不会静默把缺件算成已交。
 - **四类问题 + 齐套率** —— 缺件、份数不足、未签字、未盖章分别计数；齐套率只统计必需资料，另给含非必需资料的全量完整率。
@@ -98,13 +98,13 @@ dsh plugin --profile <profile> add dsh-settlement-docs
   - `份数` 是非负整数；`签字`/`盖章` 写 `是/否`（也接受 `已签字`、`未盖章`、`true`、`0`，留空按“否”处理）。
   - 每个资料编码只能出现一次；只有表头表示“一份都没交”，这是合法的，齐套率为 0%。
 - **工程类型模板**：`房建`（14 项 / 12 必需）、`市政`（13 项 / 12 必需）、`装饰`（12 项 / 11 必需）。
-- **样例**：`samples/quickstart/input/checklist-housing.csv`（14 项，与 `settlement.template` 的房建输出逐字节一致）和 `submitted-2026-11.csv`（11 份）。全部为合成数据（虚构编码、文件名和份数）。
+- **样例**：`samples/quickstart/input/checklist-housing.csv`（14 项，与 `settlement_template` 的房建输出逐字节一致）和 `submitted-2026-11.csv`（11 份）。全部为合成数据（虚构编码、文件名和份数）。
 
 ## 输出
 
-- `settlement.template`：内置最小资料清单模板 CSV 文本、项目类型、总项数、必需/非必需项数、字节数和 sha256；**不落盘**，需要文件时自行保存或交给导出工具。
-- `settlement.check`：`summary`（清单项数、已交数、缺件、份数不足、未签字、未盖章、非必需缺失、齐套率、阻塞/提示数）、按清单顺序排列的 `issues`、逐项合并后的 `items`。
-- `settlement.export`：核对表 CSV（UTF-8 BOM，Excel 直接打开不乱码），一行一条清单资料，问题类型和问题说明都在行内；写到 `$DSH_HOME/dsh-settlement-docs/exports/`，返回路径、行数、字节数和 sha256。不传 `filename` 时写 `settlement-check.csv`（同名会覆盖）。
+- `settlement_template`：内置最小资料清单模板 CSV 文本、项目类型、总项数、必需/非必需项数、字节数和 sha256；**不落盘**，需要文件时自行保存或交给导出工具。
+- `settlement_check`：`summary`（清单项数、已交数、缺件、份数不足、未签字、未盖章、非必需缺失、齐套率、阻塞/提示数）、按清单顺序排列的 `issues`、逐项合并后的 `items`。
+- `settlement_export`：核对表 CSV（UTF-8 BOM，Excel 直接打开不乱码），一行一条清单资料，问题类型和问题说明都在行内；写到 `$DSH_HOME/dsh-settlement-docs/exports/`，返回路径、行数、字节数和 sha256。不传 `filename` 时写 `settlement-check.csv`（同名会覆盖）。
 - **不改原 CSV**，不上传、不联网、不调用模型。
 
 ### 核对规则
@@ -140,24 +140,24 @@ node samples/quickstart/run.mjs --check
 
 | 工具 | 参数 | 必填 | 含义 |
 |---|---|---|---|
-| `settlement.template` | `project_type` | 是 | 工程类型：`房建`、`市政`、`装饰`（英文 `housing`/`municipal`/`decoration` 也接受） |
-| `settlement.check` | `checklist_csv` | 是 | 资料清单 CSV 的文本内容（工具面直接传文件内容） |
-| `settlement.check` | `submission_csv` | 是 | 实际提交清单 CSV 的文本内容 |
-| `settlement.export` | `checklist_csv` | 是 | 同上 |
-| `settlement.export` | `submission_csv` | 是 | 同上 |
-| `settlement.export` | `filename` | 否 | 导出文件名，只允许 `[A-Za-z0-9._-]`、最长 120 字符；默认 `settlement-check.csv` |
+| `settlement_template` | `project_type` | 是 | 工程类型：`房建`、`市政`、`装饰`（英文 `housing`/`municipal`/`decoration` 也接受） |
+| `settlement_check` | `checklist_csv` | 是 | 资料清单 CSV 的文本内容（工具面直接传文件内容） |
+| `settlement_check` | `submission_csv` | 是 | 实际提交清单 CSV 的文本内容 |
+| `settlement_export` | `checklist_csv` | 是 | 同上 |
+| `settlement_export` | `submission_csv` | 是 | 同上 |
+| `settlement_export` | `filename` | 否 | 导出文件名，只允许 `[A-Za-z0-9._-]`、最长 120 字符；默认 `settlement-check.csv` |
 
 调用示例（工具面）：
 
 ```sh
 # 1) 生成模板（工具面）
-#    settlement.template({ project_type: "房建" })
+#    settlement_template({ project_type: "房建" })
 
 # 2) 核对（工具面）
-#    settlement.check({ checklist_csv, submission_csv })
+#    settlement_check({ checklist_csv, submission_csv })
 
 # 3) 导出核对表（工具面）
-#    settlement.export({ checklist_csv, submission_csv, filename: "settlement-check-2026-11.csv" })
+#    settlement_export({ checklist_csv, submission_csv, filename: "settlement-check-2026-11.csv" })
 ```
 
 测试可用环境变量 `DSH_SETTLEMENT_DOCS_HOME` 覆盖本地写根目录；默认严格等于 `$DSH_HOME/dsh-settlement-docs`。
@@ -213,7 +213,7 @@ node samples/quickstart/run.mjs --check
 联网：否。
 外部系统：无。
 
-`settlement.template`、`settlement.check` 标 **R0**（只读，模板只在内存里生成）；`settlement.export` 标 **R1**（本地写，只写 `$DSH_HOME/dsh-settlement-docs` 下的 `exports/`）。可用 `DSH_SETTLEMENT_DOCS_HOME` 覆盖本地写根目录（测试用），默认严格等于 `$DSH_HOME/dsh-settlement-docs`。
+`settlement_template`、`settlement_check` 标 **R0**（只读，模板只在内存里生成）；`settlement_export` 标 **R1**（本地写，只写 `$DSH_HOME/dsh-settlement-docs` 下的 `exports/`）。可用 `DSH_SETTLEMENT_DOCS_HOME` 覆盖本地写根目录（测试用），默认严格等于 `$DSH_HOME/dsh-settlement-docs`。
 
 ## 验收证据
 
@@ -267,7 +267,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-当前版本 `0.1.0`，72 项测试通过（`node --test test/*.test.mjs`）。发布门禁 `node scripts/gate.mjs` = 元数据 lint + 公开验收行全过 + quickstart 金标行存在。开头横幅与结构图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 出 1440×576 深浅双版 webp，手写 SVG 出 1100×660 结构图；图内数字逐字取自 `samples/quickstart/expected/result.json`；没有 benchmark 数据，所以不生成 evidence 图），可重复执行；`docs/assets/quickstart.png` 为真实运行截图，配合 `docs/assets/quickstart.log` 保留。
+当前版本 `0.2.0`，73 项测试通过（`node --test test/*.test.mjs`）。发布门禁 `node scripts/gate.mjs` = 元数据 lint + 公开验收行全过 + quickstart 金标行存在。开头横幅与结构图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 出 1440×576 深浅双版 webp，手写 SVG 出 1100×660 结构图；图内数字逐字取自 `samples/quickstart/expected/result.json`；没有 benchmark 数据，所以不生成 evidence 图），可重复执行；`docs/assets/quickstart.png` 为真实运行截图，配合 `docs/assets/quickstart.log` 保留。
 
 Topics：`dsh`、`dsh-plugin`、`deepseek-harness`、`settlement`、`completion-documents`、`construction`、`document-checklist`、`csv`、`perrylink`
 

@@ -78,7 +78,7 @@ const walk = (dir) => {
 }
 walk('src')
 const source = srcFiles.map(read).join('\n')
-for (const tool of ['settlement.check', 'settlement.template', 'settlement.export']) {
+for (const tool of ['settlement_check', 'settlement_template', 'settlement_export']) {
   check(source.includes(`name: '${tool}'`), `src must define the ${tool} tool`)
 }
 for (const code of ['E_SETTLEMENT_CSV_ROW', 'E_SETTLEMENT_DUP_CODE', 'E_SETTLEMENT_UNKNOWN_CODE', 'E_SETTLEMENT_PATH_INVALID', 'E_SETTLEMENT_EMPTY']) {

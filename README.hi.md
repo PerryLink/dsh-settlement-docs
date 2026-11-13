@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-hero-en-dark.webp">
-  <img src="docs/assets/dsh-settlement-docs-hero-en-light.webp" width="100%" alt="dsh-settlement-docs बैनर: बाईं ओर नाम, मूल्य की दो पंक्तियाँ, प्रवाह उपशीर्षक और फ़ुटर; दाईं ओर settlement.check की पूर्णता जाँच शीट — आवासीय चेकलिस्ट की 14 पंक्तियाँ, आवश्यक/जमा प्रतियाँ, हस्ताक्षर/मुहर चिह्न और निर्णय: JS-01 में प्रतियाँ कम, JS-08 और JS-12 गुम, JS-10 पर मुहर नहीं और JS-14 वैकल्पिक अनुपस्थित; फ़ुटर में पूर्णता 66.67% (8/12 आवश्यक), कुल 64.29% (9/14), 4 अवरोधक / 1 सूचना और 15 पंक्तियों की वर्कशीट निर्यात रसीद; आँकड़े quickstart गोल्डन नमूने से">
+  <img src="docs/assets/dsh-settlement-docs-hero-en-light.webp" width="100%" alt="dsh-settlement-docs बैनर: बाईं ओर नाम, मूल्य की दो पंक्तियाँ, प्रवाह उपशीर्षक और फ़ुटर; दाईं ओर settlement_check की पूर्णता जाँच शीट — आवासीय चेकलिस्ट की 14 पंक्तियाँ, आवश्यक/जमा प्रतियाँ, हस्ताक्षर/मुहर चिह्न और निर्णय: JS-01 में प्रतियाँ कम, JS-08 और JS-12 गुम, JS-10 पर मुहर नहीं और JS-14 वैकल्पिक अनुपस्थित; फ़ुटर में पूर्णता 66.67% (8/12 आवश्यक), कुल 64.29% (9/14), 4 अवरोधक / 1 सूचना और 15 पंक्तियों की वर्कशीट निर्यात रसीद; आँकड़े quickstart गोल्डन नमूने से">
 </picture>
 
 # dsh-settlement-docs
@@ -39,7 +39,7 @@ dsh plugin --profile <profile> add dsh-settlement-docs
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-settlement-docs-flow-v5-dark.svg">
-  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="dsh-settlement-docs संरचना: चेकलिस्ट CSV (कोड/नाम/आवश्यक प्रतियाँ/आवश्यक) और जमा CSV (कोड/फ़ाइल/प्रतियाँ/हस्ताक्षर/मुहर) कोड पर मिलकर 14 पंक्तियाँ बनाते हैं; हर पंक्ति चार द्वार पार करती है — जमा नहीं → missing या optional_missing, कम प्रतियाँ → copies_short, हस्ताक्षर नहीं → unsigned, मुहर नहीं → unstamped, और केवल 4/4 ही complete है; स्कोरबोर्ड 66.67% (8/12 आवश्यक), कुल 64.29% (9/14) और 4 अवरोधक / 1 सूचना देता है; settlement.export 15 पंक्तियों की वर्कशीट $DSH_HOME/dsh-settlement-docs/exports/ में लिखता है">
+  <img src="docs/assets/dsh-settlement-docs-flow-v5-light.svg" width="100%" alt="dsh-settlement-docs संरचना: चेकलिस्ट CSV (कोड/नाम/आवश्यक प्रतियाँ/आवश्यक) और जमा CSV (कोड/फ़ाइल/प्रतियाँ/हस्ताक्षर/मुहर) कोड पर मिलकर 14 पंक्तियाँ बनाते हैं; हर पंक्ति चार द्वार पार करती है — जमा नहीं → missing या optional_missing, कम प्रतियाँ → copies_short, हस्ताक्षर नहीं → unsigned, मुहर नहीं → unstamped, और केवल 4/4 ही complete है; स्कोरबोर्ड 66.67% (8/12 आवश्यक), कुल 64.29% (9/14) और 4 अवरोधक / 1 सूचना देता है; settlement_export 15 पंक्तियों की वर्कशीट $DSH_HOME/dsh-settlement-docs/exports/ में लिखता है">
 </picture>
 
 ## तीन चरणों में शुरुआत
@@ -78,9 +78,9 @@ dsh plugin --profile <profile> add dsh-settlement-docs
 
 | टूल | उद्देश्य | जोखिम |
 |---|---|---|
-| `settlement.template` | परियोजना प्रकार (आवासीय / नगरपालिका / सजावट, प्रत्येक 12+ मद) के लिए अंतर्निहित चेकलिस्ट टेम्पलेट CSV बनाता है; टेक्स्ट और गणनाएँ लौटाता है | R0 |
-| `settlement.check` | सूची बनाम जमा की तुलना: गुम, कम प्रतियाँ, अनुपस्थित हस्ताक्षर/मुहर, वैकल्पिक अनुपस्थित, पूर्णता दर | R0 |
-| `settlement.export` | जाँच दोबारा चलाकर समीक्षा वर्कशीट CSV लिखता है (UTF-8 BOM); पथ, पंक्तियाँ, बाइट और sha256 लौटाता है | R1 लोकल लेखन |
+| `settlement_template` | परियोजना प्रकार (आवासीय / नगरपालिका / सजावट, प्रत्येक 12+ मद) के लिए अंतर्निहित चेकलिस्ट टेम्पलेट CSV बनाता है; टेक्स्ट और गणनाएँ लौटाता है | R0 |
+| `settlement_check` | सूची बनाम जमा की तुलना: गुम, कम प्रतियाँ, अनुपस्थित हस्ताक्षर/मुहर, वैकल्पिक अनुपस्थित, पूर्णता दर | R0 |
+| `settlement_export` | जाँच दोबारा चलाकर समीक्षा वर्कशीट CSV लिखता है (UTF-8 BOM); पथ, पंक्तियाँ, बाइट और sha256 लौटाता है | R1 लोकल लेखन |
 
 - **सूची-चालित** — एक चेकलिस्ट CSV और एक जमा CSV दस्तावेज़ कोड से मिलाए जाते हैं; मेल न खाने वाला कोड चुपचाप गुम दस्तावेज़ को जमा नहीं गिनता, बल्कि पूरी जाँच रोक देता है।
 - **चार समस्या प्रकार + पूर्णता दर** — गुम, कम प्रतियाँ, बिना हस्ताक्षर और बिना मुहर अलग-अलग गिने जाते हैं; आवश्यक पूर्णता दर केवल अनिवार्य दस्तावेज़ों पर है, और दूसरी समग्र दर वैकल्पिक दस्तावेज़ों सहित है।
@@ -101,9 +101,9 @@ dsh plugin --profile <profile> add dsh-settlement-docs
 
 ## आउटपुट
 
-- `settlement.template`: अंतर्निहित चेकलिस्ट टेम्पलेट CSV टेक्स्ट, परियोजना प्रकार, कुल/अनिवार्य/वैकल्पिक मदों की गिनती, बाइट और sha256। **कोई फ़ाइल नहीं लिखी जाती।**
-- `settlement.check`: `summary` (सूची मदें, जमा, गुम, कम प्रतियाँ, बिना हस्ताक्षर, बिना मुहर, वैकल्पिक अनुपस्थित, पूर्णता दर, अवरोध/info गिनती), सूची क्रम में `issues`, और मद-वार मिलाए गए `items`।
-- `settlement.export`: समीक्षा वर्कशीट CSV (UTF-8 BOM, Excel में साफ़ खुलती है), प्रत्येक सूची मद के लिए एक पंक्ति, समस्या प्रकार और संदेश पंक्ति में; `$DSH_HOME/dsh-settlement-docs/exports/` में लिखी जाती है; पथ, पंक्तियाँ, बाइट और sha256 लौटाता है। `filename` न देने पर `settlement-check.csv` लिखता है (समान नाम वाली फ़ाइलें ओवरराइट होती हैं)।
+- `settlement_template`: अंतर्निहित चेकलिस्ट टेम्पलेट CSV टेक्स्ट, परियोजना प्रकार, कुल/अनिवार्य/वैकल्पिक मदों की गिनती, बाइट और sha256। **कोई फ़ाइल नहीं लिखी जाती।**
+- `settlement_check`: `summary` (सूची मदें, जमा, गुम, कम प्रतियाँ, बिना हस्ताक्षर, बिना मुहर, वैकल्पिक अनुपस्थित, पूर्णता दर, अवरोध/info गिनती), सूची क्रम में `issues`, और मद-वार मिलाए गए `items`।
+- `settlement_export`: समीक्षा वर्कशीट CSV (UTF-8 BOM, Excel में साफ़ खुलती है), प्रत्येक सूची मद के लिए एक पंक्ति, समस्या प्रकार और संदेश पंक्ति में; `$DSH_HOME/dsh-settlement-docs/exports/` में लिखी जाती है; पथ, पंक्तियाँ, बाइट और sha256 लौटाता है। `filename` न देने पर `settlement-check.csv` लिखता है (समान नाम वाली फ़ाइलें ओवरराइट होती हैं)।
 - स्रोत CSV कभी नहीं बदले जाते; कोई अपलोड, नेटवर्क या मॉडल कॉल नहीं।
 
 ### जाँच नियम
@@ -141,24 +141,24 @@ node samples/quickstart/run.mjs --check
 
 | टूल | पैरामीटर | अनिवार्य | अर्थ |
 |---|---|---|---|
-| `settlement.template` | `project_type` | हाँ | परियोजना प्रकार: `housing`, `municipal` या `decoration` (चीनी नाम भी स्वीकार) |
-| `settlement.check` | `checklist_csv` | हाँ | चेकलिस्ट CSV का टेक्स्ट (टूल सतह सीधे फ़ाइल सामग्री लेती है) |
-| `settlement.check` | `submission_csv` | हाँ | वास्तविक जमा CSV का टेक्स्ट |
-| `settlement.export` | `checklist_csv` | हाँ | ऊपर जैसा |
-| `settlement.export` | `submission_csv` | हाँ | ऊपर जैसा |
-| `settlement.export` | `filename` | नहीं | निर्यात फ़ाइल नाम, केवल `[A-Za-z0-9._-]`, अधिकतम 120 अक्षर; डिफ़ॉल्ट `settlement-check.csv` |
+| `settlement_template` | `project_type` | हाँ | परियोजना प्रकार: `housing`, `municipal` या `decoration` (चीनी नाम भी स्वीकार) |
+| `settlement_check` | `checklist_csv` | हाँ | चेकलिस्ट CSV का टेक्स्ट (टूल सतह सीधे फ़ाइल सामग्री लेती है) |
+| `settlement_check` | `submission_csv` | हाँ | वास्तविक जमा CSV का टेक्स्ट |
+| `settlement_export` | `checklist_csv` | हाँ | ऊपर जैसा |
+| `settlement_export` | `submission_csv` | हाँ | ऊपर जैसा |
+| `settlement_export` | `filename` | नहीं | निर्यात फ़ाइल नाम, केवल `[A-Za-z0-9._-]`, अधिकतम 120 अक्षर; डिफ़ॉल्ट `settlement-check.csv` |
 
 कॉल उदाहरण (टूल सतह):
 
 ```sh
 # 1) टेम्पलेट बनाएँ (टूल सतह)
-#    settlement.template({ project_type: "housing" })
+#    settlement_template({ project_type: "housing" })
 
 # 2) जाँचें (टूल सतह)
-#    settlement.check({ checklist_csv, submission_csv })
+#    settlement_check({ checklist_csv, submission_csv })
 
 # 3) वर्कशीट निर्यात करें (टूल सतह)
-#    settlement.export({ checklist_csv, submission_csv, filename: "settlement-check-2026-11.csv" })
+#    settlement_export({ checklist_csv, submission_csv, filename: "settlement-check-2026-11.csv" })
 ```
 
 परीक्षण के लिए `DSH_SETTLEMENT_DOCS_HOME` पर्यावरण चर लोकल लेखन रूट को ओवरराइड करता है; डिफ़ॉल्ट में यह ठीक `$DSH_HOME/dsh-settlement-docs` है।
@@ -214,7 +214,7 @@ node samples/quickstart/run.mjs --check
 नेटवर्क: नहीं।
 बाहरी सिस्टम: कोई नहीं।
 
-`settlement.template` और `settlement.check` **R0** हैं (केवल पढ़ना; टेम्पलेट मेमोरी में रहता है)। `settlement.export` **R1** है (लोकल लेखन, `$DSH_HOME/dsh-settlement-docs` के अंतर्गत)। परीक्षण के लिए `DSH_SETTLEMENT_DOCS_HOME` लोकल लेखन रूट को ओवरराइड कर सकता है; डिफ़ॉल्ट में यह ठीक `$DSH_HOME/dsh-settlement-docs` है।
+`settlement_template` और `settlement_check` **R0** हैं (केवल पढ़ना; टेम्पलेट मेमोरी में रहता है)। `settlement_export` **R1** है (लोकल लेखन, `$DSH_HOME/dsh-settlement-docs` के अंतर्गत)। परीक्षण के लिए `DSH_SETTLEMENT_DOCS_HOME` लोकल लेखन रूट को ओवरराइड कर सकता है; डिफ़ॉल्ट में यह ठीक `$DSH_HOME/dsh-settlement-docs` है।
 
 ## स्वीकृति प्रमाण
 
@@ -268,7 +268,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-वर्तमान संस्करण `0.1.0`, 72 टेस्ट पास (`node --test test/*.test.mjs`)। रिलीज़ गेट `node scripts/gate.mjs` = मेटाडेटा lint + सभी सार्वजनिक स्वीकृति पंक्तियाँ पास + quickstart गोल्डन पंक्ति मौजूद। शुरुआती बैनर और संरचना आरेख [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं (Pillow 1440×576 का हल्का/गहरा webp बनाता है, हाथ से लिखा SVG 1100×660 का संरचना आरेख बनाता है; हर संख्या `samples/quickstart/expected/result.json` से शब्दशः ली गई है; benchmark डेटा नहीं है, इसलिए evidence चार्ट नहीं बनता) और दोबारा चलाया जा सकता है; `docs/assets/quickstart.png` वास्तविक रन कैप्चर है और `docs/assets/quickstart.log` के साथ रखा गया है।
+वर्तमान संस्करण `0.2.0`, 73 टेस्ट पास (`node --test test/*.test.mjs`)। रिलीज़ गेट `node scripts/gate.mjs` = मेटाडेटा lint + सभी सार्वजनिक स्वीकृति पंक्तियाँ पास + quickstart गोल्डन पंक्ति मौजूद। शुरुआती बैनर और संरचना आरेख [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं (Pillow 1440×576 का हल्का/गहरा webp बनाता है, हाथ से लिखा SVG 1100×660 का संरचना आरेख बनाता है; हर संख्या `samples/quickstart/expected/result.json` से शब्दशः ली गई है; benchmark डेटा नहीं है, इसलिए evidence चार्ट नहीं बनता) और दोबारा चलाया जा सकता है; `docs/assets/quickstart.png` वास्तविक रन कैप्चर है और `docs/assets/quickstart.log` के साथ रखा गया है।
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `settlement`, `completion-documents`, `construction`, `document-checklist`, `csv`, `perrylink`
 

@@ -39,12 +39,12 @@ async function main() {
     const checklistText = readFileSync(path.join(root, 'samples', 'quickstart', 'input', 'checklist-housing.csv'), 'utf8')
     const submissionText = readFileSync(path.join(root, 'samples', 'quickstart', 'input', 'submitted-2026-11.csv'), 'utf8')
 
-    const template = await tools['settlement.template'].execute({ project_type: '房建' }, exec)
-    const checked = await tools['settlement.check'].execute(
+    const template = await tools['settlement_template'].execute({ project_type: '房建' }, exec)
+    const checked = await tools['settlement_check'].execute(
       { checklist_csv: checklistText, submission_csv: submissionText },
       exec,
     )
-    const exported = await tools['settlement.export'].execute(
+    const exported = await tools['settlement_export'].execute(
       { checklist_csv: checklistText, submission_csv: submissionText, filename: 'settlement-check-2026-11.csv' },
       exec,
     )
@@ -55,19 +55,19 @@ async function main() {
     const allItems = summaryOf.flatMap((entry) => entry.items)
 
     const traversal = await errorCode(() =>
-      tools['settlement.export'].execute(
+      tools['settlement_export'].execute(
         { checklist_csv: checklistText, submission_csv: submissionText, filename: '../evil.csv' },
         exec,
       ),
     )
     const duplicate = await errorCode(() =>
-      tools['settlement.check'].execute(
+      tools['settlement_check'].execute(
         { checklist_csv: checklist(['A-1,结算书,1,是', 'A-1,副本,1,否']), submission_csv: '资料编码,文件名,份数,签字,盖章\n' },
         exec,
       ),
     )
     const unknown = await errorCode(() =>
-      tools['settlement.check'].execute(
+      tools['settlement_check'].execute(
         {
           checklist_csv: checklistText,
           submission_csv: '资料编码,文件名,份数,签字,盖章\nZZ-99,unknown.pdf,1,是,是\n',
@@ -75,14 +75,14 @@ async function main() {
         exec,
       ),
     )
-    const empty = await errorCode(() => tools['settlement.check'].execute({ checklist_csv: '', submission_csv: submissionText }, exec))
+    const empty = await errorCode(() => tools['settlement_check'].execute({ checklist_csv: '', submission_csv: submissionText }, exec))
     const rowError = await errorCode(() =>
-      tools['settlement.check'].execute(
+      tools['settlement_check'].execute(
         { checklist_csv: checklist(['A-1,结算书,0,是']), submission_csv: '资料编码,文件名,份数,签字,盖章\n' },
         exec,
       ),
     )
-    const unknownType = await errorCode(() => tools['settlement.template'].execute({ project_type: '桥梁' }, exec))
+    const unknownType = await errorCode(() => tools['settlement_template'].execute({ project_type: '桥梁' }, exec))
 
     // ACCEPTANCE.csv uses a simple comma-split schema: keep every field free of commas.
     const metrics = [

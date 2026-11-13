@@ -9,7 +9,7 @@
  *
  * The golden file `expected/result.json` is the stdout of `--json`; it is a real
  * run over the committed CSVs, not hand-written output. The checklist file is
- * byte-identical to `settlement.template({ project_type: '房建' })`. No network,
+ * byte-identical to `settlement_template({ project_type: '房建' })`. No network,
  * no model, no customer data: every code, name and copy count is synthetic.
  */
 import assert from 'node:assert/strict'
@@ -36,13 +36,13 @@ async function run() {
     const tools = Object.fromEntries(createTools({ baseDir: tempDir }).map((tool) => [tool.name, tool]))
     const exec = { callId: 'quickstart', agent: { id: 'quickstart' } }
 
-    const template = await tools['settlement.template'].execute({ project_type: '房建' }, exec)
+    const template = await tools['settlement_template'].execute({ project_type: '房建' }, exec)
     assert.equal(template.csv, checklistText, 'the committed checklist must equal the 房建 template')
-    const checked = await tools['settlement.check'].execute(
+    const checked = await tools['settlement_check'].execute(
       { checklist_csv: template.csv, submission_csv: submissionText },
       exec,
     )
-    const exported = await tools['settlement.export'].execute(
+    const exported = await tools['settlement_export'].execute(
       {
         checklist_csv: template.csv,
         submission_csv: submissionText,

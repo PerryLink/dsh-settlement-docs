@@ -18,7 +18,7 @@ const sha256 = (value: string | Buffer) => createHash('sha256').update(value).di
 
 export function createTools(deps: ToolDeps) {
   const check = defineTool({
-    name: 'settlement.check',
+    name: 'settlement_check',
     description:
       'Check a final-settlement document checklist (code, name, required copies, required flag) against the actual submission (code, filename, copies, signed, stamped). Returns missing required documents, short copies, missing signatures/stamps, optional documents absent (info only) and the completeness rate. Read-only.',
     parameters: {
@@ -43,7 +43,7 @@ export function createTools(deps: ToolDeps) {
   })
 
   const template = defineTool({
-    name: 'settlement.template',
+    name: 'settlement_template',
     description:
       'Return the built-in minimal settlement-document checklist template CSV for a project type (房建/市政/装饰; 12+ unique items each) with columns 资料编码,资料名称,应有份数,是否必需. Read-only; no file is written.',
     parameters: {
@@ -76,7 +76,7 @@ export function createTools(deps: ToolDeps) {
   })
 
   const exportCsv = defineTool({
-    name: 'settlement.export',
+    name: 'settlement_export',
     description:
       'Re-run the document check and write the review worksheet CSV (UTF-8 BOM, one row per checklist line with issue types and messages) under $DSH_HOME/dsh-settlement-docs/exports; returns path, rows, bytes and sha256. Local R1 write.',
     parameters: {

@@ -1,6 +1,6 @@
 {
   "name": "dsh-settlement-docs",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Check a construction final-settlement document checklist against what was actually submitted: missing documents, short copies, missing signatures/stamps and the completeness rate; export a review worksheet CSV.",
   "type": "module",
   "main": "./lib/plugin/index.js",

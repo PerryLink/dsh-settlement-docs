@@ -9,7 +9,7 @@ Design notes
 ------------
 Hero -- left column is prose (kicker / two-line wordmark / two value lines /
   one subtitle / one meta / footer). The right column is this plugin's own
-  semantic graphic: the completeness check sheet produced by settlement.check.
+  semantic graphic: the completeness check sheet produced by settlement_check.
   It lists all 14 housing-checklist lines from the quickstart fixture, one row
   per line, with required/submitted copies, signature/stamp markers and the
   verdict the checker actually returns:
@@ -17,7 +17,7 @@ Hero -- left column is prose (kicker / two-line wordmark / two value lines /
       JS-10 unstamped, JS-14 optional_missing;
     * 9 complete overall, 8 of 12 required; rate 66.67%, overall 64.29%;
     * 4 blocking + 1 info issues.
-  The card footer is the settlement.export receipt (15 worksheet rows,
+  The card footer is the settlement_export receipt (15 worksheet rows,
   1,638 bytes, UTF-8 BOM, sha256 prefix). Every number comes from
   samples/quickstart/expected/result.json; nothing is invented.
 
@@ -25,7 +25,7 @@ Flow -- not a row of five boxes. Grammar: two source cards join on the
   document code, then a per-line short-circuit adjudication ladder (submitted?
   copies? signed? stamped?) with side doors for missing / optional_missing /
   copies_short / unsigned / unstamped, a completeness scoreboard with a
-  14-cell line strip, and one settlement.export rail. Text is token-only
+  14-cell line strip, and one settlement_export rail. Text is token-only
   (real CSV headers, tool names, issue types, field names, amounts), so one
   light/dark pair serves all five README languages.
 
@@ -200,7 +200,7 @@ HERO = {
         sub="清单 CSV + 提交 CSV → 齐套率 → 核对表",
         meta="R0 只读 / R1 本地写 · 不联网 · 不调模型 · 不上传",
         foot="Apache-2.0 · PerryLink DSH plugin family · dsh ≥0.2.1 <0.4.0",
-        sheet_label="settlement.check · R0",
+        sheet_label="settlement_check · R0",
         sheet_sub="房建 · 14 items · 12 required",
         rate="66.67%",
         rate_note="齐套率 · 8/12 必需",
@@ -210,7 +210,7 @@ HERO = {
         th_verdict="判定",
         sum_counts="missing 2 · copies_short 1 · unsigned 0 · unstamped 1 · optional_missing 1",
         sum_line="blocking 4 · info 1 · overall 64.29% · 9/14",
-        exp_line="settlement.export · R1 → 15-row worksheet · 1,638 B · UTF-8 BOM · sha256 6a09d934…",
+        exp_line="settlement_export · R1 → 15-row worksheet · 1,638 B · UTF-8 BOM · sha256 6a09d934…",
     ),
     "en": dict(
         kicker="DeepSeek Harness · settlement document check",
@@ -220,7 +220,7 @@ HERO = {
         sub="checklist CSV + submission CSV → rate → worksheet",
         meta="R0 read-only / R1 local write · offline · no model call",
         foot="Apache-2.0 · PerryLink DSH plugin family · dsh ≥0.2.1 <0.4.0",
-        sheet_label="settlement.check · R0",
+        sheet_label="settlement_check · R0",
         sheet_sub="housing · 14 items · 12 required",
         rate="66.67%",
         rate_note="rate · 8/12 required",
@@ -230,7 +230,7 @@ HERO = {
         th_verdict="verdict",
         sum_counts="missing 2 · copies_short 1 · unsigned 0 · unstamped 1 · optional_missing 1",
         sum_line="blocking 4 · info 1 · overall 64.29% · 9/14",
-        exp_line="settlement.export · R1 → 15-row worksheet · 1,638 B · UTF-8 BOM · sha256 6a09d934…",
+        exp_line="settlement_export · R1 → 15-row worksheet · 1,638 B · UTF-8 BOM · sha256 6a09d934…",
     ),
 }
 
@@ -416,7 +416,7 @@ def flow_svg(skin_name: str) -> None:
     f = FLOW[skin_name]
     p: list[str] = []
 
-    p.append(f'''<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-label="dsh-settlement-docs: a checklist CSV and an actual-submission CSV join on the document code; every checklist line runs a short-circuit adjudication ladder (submitted, copies, signed, stamped) with side doors for missing, optional_missing, copies_short, unsigned and unstamped; a completeness scoreboard reports 66.67% (8/12 required) and 4 blocking plus 1 info issue; settlement.export writes a 15-row UTF-8 BOM worksheet into the DSH_HOME exports directory">
+    p.append(f'''<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-label="dsh-settlement-docs: a checklist CSV and an actual-submission CSV join on the document code; every checklist line runs a short-circuit adjudication ladder (submitted, copies, signed, stamped) with side doors for missing, optional_missing, copies_short, unsigned and unstamped; a completeness scoreboard reports 66.67% (8/12 required) and 4 blocking plus 1 info issue; settlement_export writes a 15-row UTF-8 BOM worksheet into the DSH_HOME exports directory">
 <title>dsh-settlement-docs: two CSVs, a per-line short-circuit ladder, one completeness scoreboard and worksheet</title>
 <defs>
   <linearGradient id="bg" x1="0" y1="0" x2="0.35" y2="1">
@@ -593,7 +593,7 @@ def flow_svg(skin_name: str) -> None:
         p.append(f'<line x1="{ax}" y1="548" x2="{ax}" y2="552" stroke="{f["accent"]}" stroke-width="2" opacity=".55"/>')
         p.append(f'<path d="M{ax - 5} 551 L{ax + 5} 551 L{ax} 556 Z" fill="{f["accent"]}" opacity=".7"/>')
     p.append(f'<g filter="url(#soft)"><rect x="40" y="556" width="1020" height="76" rx="18" fill="{f["card"]}" stroke="{f["edge"]}" stroke-width="1.5"/></g>')
-    p.append(svg_text(60, 582, "settlement.export · R1", 17, f["accent"],
+    p.append(svg_text(60, 582, "settlement_export · R1", 17, f["accent"],
                       bold=True, limit=220, tag="export.name"))
     p.append(svg_text(300, 582,
                       "worksheet CSV · 15 rows (header + 14) · 1,638 B · UTF-8 BOM",
