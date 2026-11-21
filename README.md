@@ -132,6 +132,11 @@ node samples/quickstart/run.mjs --check
 
 ![dsh-settlement-docs quickstart 真实运行输出](docs/assets/quickstart.png)
 
+![dsh-settlement-docs quickstart 真实运行输出](docs/assets/dsh-settlement-docs-demo.gif)
+
+*同一段真实运行的动图版本。*
+
+
 样例是一次真实运行：房建清单 14 项（12 必需 / 2 非必需），实际提交 11 份；缺 **2 项必需 + 1 项非必需**，**1 项份数不足**（竣工结算书 1/3 份），**1 项未盖章**（隐蔽工程验收记录），没有未签字项。齐套率 **66.67%（8/12 必需）**，全量完整率 **64.29%（9/14）**，**4 个阻塞 + 1 个提示**，核对表 15 行、1,638 字节。金标 `samples/quickstart/expected/result.json` 由 `node samples/quickstart/run.mjs --json` 真实产生，不是手写；原始日志见 [`docs/assets/quickstart.log`](docs/assets/quickstart.log)。
 
 ## 配置

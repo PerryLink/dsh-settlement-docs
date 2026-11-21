@@ -133,6 +133,11 @@ node samples/quickstart/run.mjs --check
 
 ![dsh-settlement-docs quickstart का वास्तविक आउटपुट](docs/assets/quickstart.png)
 
+![dsh-settlement-docs quickstart का वास्तविक आउटपुट](docs/assets/dsh-settlement-docs-demo.gif)
+
+*उसी असली रन का एनिमेटेड संस्करण।*
+
+
 यह एक वास्तविक रन है: 14 मदों की आवासीय सूची (12 अनिवार्य / 2 वैकल्पिक) बनाम 11 जमा फ़ाइलें — **2 अनिवार्य + 1 वैकल्पिक गुम**, **1 कम प्रति** (निपटान पुस्तिका 1/3), **1 मुहर अनुपस्थित** (छिपे कार्य का रिकॉर्ड), कोई हस्ताक्षर गुम नहीं। पूर्णता दर **66.67% (8/12 अनिवार्य)** और **64.29% (9/14) समग्र** है, **4 अवरोधक + 1 सूचनात्मक** और 15 पंक्तियों की वर्कशीट (1,638 बाइट) है। `samples/quickstart/expected/result.json` `node samples/quickstart/run.mjs --json` का वास्तविक आउटपुट है, हाथ से लिखा नहीं; कच्चा लॉग [`docs/assets/quickstart.log`](docs/assets/quickstart.log) में है।
 
 ## कॉन्फ़िगरेशन

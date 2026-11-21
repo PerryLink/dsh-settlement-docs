@@ -141,6 +141,11 @@ node samples/quickstart/run.mjs --check
 
 ![dsh-settlement-docs quickstart terminal output](docs/assets/quickstart.png)
 
+![dsh-settlement-docs quickstart terminal output](docs/assets/dsh-settlement-docs-demo.gif)
+
+*The animated version of the same run.*
+
+
 This is a real run: a 14-item housing checklist (12 required / 2 optional) against 11 submitted files — **2 required + 1 optional missing**, **1 short copy** (settlement book 1/3), **1 missing stamp** (concealed-works record), no missing signatures. The completeness rate is **66.67% (8/12 required)** and **64.29% (9/14) overall**, with **4 blocking + 1 info** issues and a 15-row worksheet (1,638 bytes). `samples/quickstart/expected/result.json` is the real stdout of `node samples/quickstart/run.mjs --json`, not hand-written; the raw log is [`docs/assets/quickstart.log`](docs/assets/quickstart.log).
 
 ## Configuration

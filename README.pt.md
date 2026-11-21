@@ -133,6 +133,11 @@ node samples/quickstart/run.mjs --check
 
 ![Saída real do quickstart do dsh-settlement-docs](docs/assets/quickstart.png)
 
+![Saída real do quickstart do dsh-settlement-docs](docs/assets/dsh-settlement-docs-demo.gif)
+
+*A versão animada da mesma execução.*
+
+
 É uma execução real: lista residencial de 14 itens (12 obrigatórios / 2 opcionais) contra 11 arquivos entregues — **2 obrigatórios + 1 opcional ausentes**, **1 cópia insuficiente** (livro de liquidação 1/3), **1 carimbo ausente** (registro de obras ocultas), nenhuma assinatura ausente. A taxa de completude é **66,67% (8/12 obrigatórios)** e **64,29% (9/14) global**, com **4 bloqueantes + 1 informativo** e uma planilha de 15 linhas (1.638 bytes). `samples/quickstart/expected/result.json` é a saída real de `node samples/quickstart/run.mjs --json`, não escrita à mão; o log bruto está em [`docs/assets/quickstart.log`](docs/assets/quickstart.log).
 
 ## Configuração
