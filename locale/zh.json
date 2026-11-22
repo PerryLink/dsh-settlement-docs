@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Settlement docs",
+    "description": "按资料清单核对竣工结算资料齐套性：缺件、份数不足、未签字/未盖章、非必需缺失 → 核对表 CSV。"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "dsh-settlement-docs",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Check a construction final-settlement document checklist against what was actually submitted: missing documents, short copies, missing signatures/stamps and the completeness rate; export a review worksheet CSV.",
   "type": "module",
   "main": "./lib/plugin/index.js",
@@ -9,7 +9,8 @@
     ".": {
       "types": "./lib/plugin/index.d.ts",
       "default": "./lib/plugin/index.js"
-    }
+    },
+    "./locale/*.json": "./locale/*.json"
   },
   "files": [
     "lib",
@@ -25,7 +26,8 @@
     "screenshots.json",
     "samples",
     "docs/assets",
-    "icon.svg"
+    "icon.svg",
+    "locale/*.json"
   ],
   "dsh": {
     "bundle": {
@@ -98,5 +100,10 @@
     "@deepseek-ai/dsh-tools": {
       "optional": true
     }
+  },
+  "icon": "icon.svg",
+  "author": {
+    "name": "PerryLink",
+    "url": "https://github.com/PerryLink"
   }
 }

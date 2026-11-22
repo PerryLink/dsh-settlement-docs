@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Settlement docs",
+    "description": "Check a construction final-settlement document checklist against what was actually submitted — missing documents, short copies, missing signatures/stamps, optional documents absent → a review worksheet CSV."
+  }
+}
