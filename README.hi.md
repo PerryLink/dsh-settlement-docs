@@ -11,6 +11,8 @@
 
 DeepSeek Harness के लिए पूरी तरह लोकल पूर्णता जाँच उपकरण: एक चेकलिस्ट CSV और एक वास्तविक जमा CSV पढ़ता है, दोनों को मद-दर-मद मिलाता है, पूर्णता दर निकालता है और एक ऐसी समीक्षा वर्कशीट निर्यात करता है जो Excel में साफ़ खुलती है — केवल फ़ाइल नाम, प्रतियों की संख्या और हस्ताक्षर/मुहर के चिह्न; फ़ाइल की सामग्री नहीं पढ़ी जाती, कुछ अपलोड नहीं होता, नेटवर्क नहीं होता और मॉडल नहीं बुलाया जाता।
 
+अंतिम सत्यापन: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [इंस्टॉल](#तीन-चरणों-में-शुरुआत) · [कॉन्फ़िगरेशन](#कॉन्फ़िगरेशन) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -136,7 +138,6 @@ node samples/quickstart/run.mjs --check
 ![dsh-settlement-docs quickstart का वास्तविक आउटपुट](docs/assets/dsh-settlement-docs-demo.gif)
 
 *उसी असली रन का एनिमेटेड संस्करण।*
-
 
 यह एक वास्तविक रन है: 14 मदों की आवासीय सूची (12 अनिवार्य / 2 वैकल्पिक) बनाम 11 जमा फ़ाइलें — **2 अनिवार्य + 1 वैकल्पिक गुम**, **1 कम प्रति** (निपटान पुस्तिका 1/3), **1 मुहर अनुपस्थित** (छिपे कार्य का रिकॉर्ड), कोई हस्ताक्षर गुम नहीं। पूर्णता दर **66.67% (8/12 अनिवार्य)** और **64.29% (9/14) समग्र** है, **4 अवरोधक + 1 सूचनात्मक** और 15 पंक्तियों की वर्कशीट (1,638 बाइट) है। `samples/quickstart/expected/result.json` `node samples/quickstart/run.mjs --json` का वास्तविक आउटपुट है, हाथ से लिखा नहीं; कच्चा लॉग [`docs/assets/quickstart.log`](docs/assets/quickstart.log) में है।
 
@@ -273,7 +274,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-वर्तमान संस्करण `0.2.0`, 73 टेस्ट पास (`node --test test/*.test.mjs`)। रिलीज़ गेट `node scripts/gate.mjs` = मेटाडेटा lint + सभी सार्वजनिक स्वीकृति पंक्तियाँ पास + quickstart गोल्डन पंक्ति मौजूद। शुरुआती बैनर और संरचना आरेख [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं (Pillow 1440×576 का हल्का/गहरा webp बनाता है, हाथ से लिखा SVG 1100×660 का संरचना आरेख बनाता है; हर संख्या `samples/quickstart/expected/result.json` से शब्दशः ली गई है; benchmark डेटा नहीं है, इसलिए evidence चार्ट नहीं बनता) और दोबारा चलाया जा सकता है; `docs/assets/quickstart.png` वास्तविक रन कैप्चर है और `docs/assets/quickstart.log` के साथ रखा गया है।
+वर्तमान संस्करण `0.2.1`, 73 टेस्ट पास (`node --test test/*.test.mjs`)। रिलीज़ गेट `node scripts/gate.mjs` = मेटाडेटा lint + सभी सार्वजनिक स्वीकृति पंक्तियाँ पास + quickstart गोल्डन पंक्ति मौजूद। शुरुआती बैनर और संरचना आरेख [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से बनते हैं (Pillow 1440×576 का हल्का/गहरा webp बनाता है, हाथ से लिखा SVG 1100×660 का संरचना आरेख बनाता है; हर संख्या `samples/quickstart/expected/result.json` से शब्दशः ली गई है; benchmark डेटा नहीं है, इसलिए evidence चार्ट नहीं बनता) और दोबारा चलाया जा सकता है; `docs/assets/quickstart.png` वास्तविक रन कैप्चर है और `docs/assets/quickstart.log` के साथ रखा गया है।
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `settlement`, `completion-documents`, `construction`, `document-checklist`, `csv`, `perrylink`
 

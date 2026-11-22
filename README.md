@@ -11,6 +11,8 @@
 
 面向 DeepSeek Harness 的纯本地资料齐套核对工具：读一份资料清单 CSV 和一份实际提交清单 CSV，逐项对齐后给出齐套率，再把问题清单导成 Excel 可直接打开的核对表——只读文件名、份数和签章标记，不读文件内容，不联网、不调用模型、不上传。
 
+最近一次核验：DeepSeek Harness `dsh-v0.2.3-alpha.1`（2026-11-22）。
+
 [安装](#三步上手) · [配置](#配置) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -135,7 +137,6 @@ node samples/quickstart/run.mjs --check
 ![dsh-settlement-docs quickstart 真实运行输出](docs/assets/dsh-settlement-docs-demo.gif)
 
 *同一段真实运行的动图版本。*
-
 
 样例是一次真实运行：房建清单 14 项（12 必需 / 2 非必需），实际提交 11 份；缺 **2 项必需 + 1 项非必需**，**1 项份数不足**（竣工结算书 1/3 份），**1 项未盖章**（隐蔽工程验收记录），没有未签字项。齐套率 **66.67%（8/12 必需）**，全量完整率 **64.29%（9/14）**，**4 个阻塞 + 1 个提示**，核对表 15 行、1,638 字节。金标 `samples/quickstart/expected/result.json` 由 `node samples/quickstart/run.mjs --json` 真实产生，不是手写；原始日志见 [`docs/assets/quickstart.log`](docs/assets/quickstart.log)。
 
@@ -272,7 +273,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-当前版本 `0.2.0`，73 项测试通过（`node --test test/*.test.mjs`）。发布门禁 `node scripts/gate.mjs` = 元数据 lint + 公开验收行全过 + quickstart 金标行存在。开头横幅与结构图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 出 1440×576 深浅双版 webp，手写 SVG 出 1100×660 结构图；图内数字逐字取自 `samples/quickstart/expected/result.json`；没有 benchmark 数据，所以不生成 evidence 图），可重复执行；`docs/assets/quickstart.png` 为真实运行截图，配合 `docs/assets/quickstart.log` 保留。
+当前版本 `0.2.1`，73 项测试通过（`node --test test/*.test.mjs`）。发布门禁 `node scripts/gate.mjs` = 元数据 lint + 公开验收行全过 + quickstart 金标行存在。开头横幅与结构图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 出 1440×576 深浅双版 webp，手写 SVG 出 1100×660 结构图；图内数字逐字取自 `samples/quickstart/expected/result.json`；没有 benchmark 数据，所以不生成 evidence 图），可重复执行；`docs/assets/quickstart.png` 为真实运行截图，配合 `docs/assets/quickstart.log` 保留。
 
 Topics：`dsh`、`dsh-plugin`、`deepseek-harness`、`settlement`、`completion-documents`、`construction`、`document-checklist`、`csv`、`perrylink`
 

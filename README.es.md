@@ -11,6 +11,8 @@
 
 Una herramienta de verificación de completitud puramente local para DeepSeek Harness: lee un CSV de lista de documentos y un CSV de entrega real, los alinea partida por partida, calcula la tasa de completitud y exporta una hoja de revisión que abre limpia en Excel — solo nombres de archivo, número de copias y marcas de firma/sello; no lee el contenido de los archivos y no sube, no se conecta ni llama a un modelo.
 
+Última verificación: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Instalar](#instalación-en-tres-pasos) · [Configuración](#configuración) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -136,7 +138,6 @@ node samples/quickstart/run.mjs --check
 ![Salida real del quickstart de dsh-settlement-docs](docs/assets/dsh-settlement-docs-demo.gif)
 
 *La versión animada de la misma ejecución.*
-
 
 Es una ejecución real: lista de vivienda de 14 partidas (12 obligatorias / 2 opcionales) contra 11 archivos entregados — **2 obligatorios + 1 opcional faltantes**, **1 copia insuficiente** (libro de liquidación 1/3), **1 sello ausente** (registro de obras ocultas), ninguna firma ausente. La tasa de completitud es **66,67% (8/12 obligatorias)** y **64,29% (9/14) global**, con **4 bloqueantes + 1 informativo** y una hoja de 15 filas (1.638 bytes). `samples/quickstart/expected/result.json` es la salida real de `node samples/quickstart/run.mjs --json`, no escrita a mano; el registro bruto está en [`docs/assets/quickstart.log`](docs/assets/quickstart.log).
 
@@ -273,7 +274,7 @@ node --test test/*.test.mjs
 node scripts/gate.mjs
 ```
 
-Versión actual `0.2.0`, 73 pruebas en verde (`node --test test/*.test.mjs`). La puerta de publicación `node scripts/gate.mjs` = lint de metadatos + todas las filas públicas de aceptación en verde + la fila dorada del quickstart presente. El banner inicial y el diagrama de estructura los genera [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow produce el webp claro/oscuro de 1440×576, un SVG escrito a mano produce el diagrama de 1100×660; cada cifra se copia de `samples/quickstart/expected/result.json`; no hay datos de benchmark, así que no se emite gráfico de evidencia) y se puede volver a ejecutar; `docs/assets/quickstart.png` es una captura real conservada junto a `docs/assets/quickstart.log`.
+Versión actual `0.2.1`, 73 pruebas en verde (`node --test test/*.test.mjs`). La puerta de publicación `node scripts/gate.mjs` = lint de metadatos + todas las filas públicas de aceptación en verde + la fila dorada del quickstart presente. El banner inicial y el diagrama de estructura los genera [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow produce el webp claro/oscuro de 1440×576, un SVG escrito a mano produce el diagrama de 1100×660; cada cifra se copia de `samples/quickstart/expected/result.json`; no hay datos de benchmark, así que no se emite gráfico de evidencia) y se puede volver a ejecutar; `docs/assets/quickstart.png` es una captura real conservada junto a `docs/assets/quickstart.log`.
 
 Topics: `dsh`, `dsh-plugin`, `deepseek-harness`, `settlement`, `completion-documents`, `construction`, `document-checklist`, `csv`, `perrylink`
 
